@@ -5,7 +5,8 @@ import static java.lang.Math.min;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import model.items.IEquipableItem;
+
+import model.items.*;
 import model.map.Location;
 
 /**
@@ -104,4 +105,71 @@ public abstract class AbstractUnit implements IUnit {
       setLocation(targetLocation);
     }
   }
+
+  @Override
+  public void attack(IUnit other){
+    if(!this.isDead()){
+      other.receiveAttack(getEquippedItem());
+    }
+  }
+
+  @Override
+  public void receiveAxeAttack(Axe axe) {
+    receiveAttack(axe);
+  }
+
+  @Override
+  public void receiveSwordAttack(Sword sword) {
+    receiveAttack(sword);
+  }
+
+  @Override
+  public void receiveSpearAttack(Spear spear) {
+    receiveAttack(spear);
+  }
+
+  @Override
+  public void receiveStaffAttack(Staff staff) {
+    receiveAttack(staff);
+  }
+
+  @Override
+  public void receiveBowAttack(Bow bow) {
+    receiveAttack(bow);
+  }
+
+  @Override
+  public void receiveAnimaAttack(Anima anima) {
+    receiveAttack(anima);
+  }
+
+  @Override
+  public void receiveDarkAttack(Dark dark) {
+    receiveAttack(dark);
+  }
+
+  @Override
+  public void receiveLightAttack(Light light) {
+    receiveAttack(light);
+  }
+
+  @Override
+  public void receiveAttack(IEquipableItem item) {
+    this.currentHitPoints -= item.getPower();
+  }
+
+  @Override
+  public void receiveEffectiveDamage(IEquipableItem item){
+    this.currentHitPoints -= item.getPower()*1.5;
+  }
+
+  @Override
+  public void receiveNotEffectiveDamage(IEquipableItem item){
+    this.currentHitPoints -= Math.max(0,item.getPower()-20);
+  }
+
+
+
+
+
 }

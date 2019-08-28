@@ -79,6 +79,12 @@ public interface IUnit {
     void moveTo(Location targetLocation);
 
     /**
+     * Attacks another unit.
+     * @param target of the attack.
+     */
+    void attack(IUnit target);
+
+    /**
      * Receives a Axe attack.
      * @param axe which is used to attack.
      */
@@ -144,6 +150,8 @@ public interface IUnit {
      * @param item the item used to attack.
      */
     void receiveNotEffectiveDamage(IEquipableItem item);
+
+
 
 
 
