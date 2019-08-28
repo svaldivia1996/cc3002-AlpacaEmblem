@@ -11,20 +11,32 @@ import model.map.Location;
  * except some special ones can carry at most 3 weapons.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public interface IUnit {
 
   /**
+   * The current state of the unit, dead or alive.
+   * @return True if the unit is dead, false otherwise.
+   */
+  boolean isDead();
+
+  /**
    * Sets the currently equipped item of this unit.
    *
-   * @param item
-   *     the item to equip
+   * @param item the item to equip
    */
   void equipItem(IEquipableItem item);
 
   /**
-   * @return hit points of the unit
+   *
+   * @return return the maximum amount of hit points of the unit
+   */
+  int getMaxHitPoints();
+
+  /**
+   * @return the current hit points of the unit
    */
   int getCurrentHitPoints();
 
@@ -39,8 +51,7 @@ public interface IUnit {
   IEquipableItem getEquippedItem();
 
   /**
-   * @param item
-   *     the item to be equipped
+   * @param item the item to be equipped
    */
   void setEquippedItem(IEquipableItem item);
 
@@ -65,4 +76,6 @@ public interface IUnit {
    * If the other location is out of this unit's movement range, the unit doesn't move.
    */
   void moveTo(Location targetLocation);
+
+
 }

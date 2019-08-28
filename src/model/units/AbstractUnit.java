@@ -16,18 +16,23 @@ import model.map.Location;
  * units.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public abstract class AbstractUnit implements IUnit {
 
-  protected final List<IEquipableItem> items = new ArrayList<>();
-  private final int currentHitPoints;
-  private final int movement;
-  protected IEquipableItem equippedItem;
-  private Location location;
+    private final int maxHitPoints;
+    private int currentHitPoints;
+    private int movement;
+    private Location location;
+    protected final List<IEquipableItem> items = new ArrayList<>();
+    protected IEquipableItem equippedItem;
+
+
 
   /**
    * Creates a new Unit.
+   *
    *
    * @param hitPoints
    *     the maximum amount of damage a unit can sustain
@@ -40,10 +45,21 @@ public abstract class AbstractUnit implements IUnit {
    */
   protected AbstractUnit(final int hitPoints, final int movement,
       final Location location, final int maxItems, final IEquipableItem... items) {
+    this.maxHitPoints = hitPoints;
     this.currentHitPoints = hitPoints;
     this.movement = movement;
     this.location = location;
     this.items.addAll(Arrays.asList(items).subList(0, min(maxItems, items.length)));
+  }
+
+  @Override
+  public boolean isDead(){
+    return getCurrentHitPoints() <= 0;
+  }
+
+  @Override
+  public int getMaxHitPoints() {
+    return maxHitPoints;
   }
 
   @Override

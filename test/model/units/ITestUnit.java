@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 /**
  * Interface that defines the common behaviour of all the test for the units classes
  *
- * @author Ignacio Slater Muñoz
+ * @author Ignacio Slater Muñoz*
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public interface ITestUnit {
@@ -23,6 +24,9 @@ public interface ITestUnit {
    */
   void setTestUnit();
 
+  /**
+   * Set up targetAlpaca
+   */
   void setTargetAlpaca();
 
   /**
@@ -49,9 +53,7 @@ public interface ITestUnit {
 
   /**
    * Tries to equip a weapon to the alpaca and verifies that it was not equipped
-   *
-   * @param item
-   *     to be equipped
+   * @param item to be equipped
    */
   void checkEquippedItem(IEquipableItem item);
 

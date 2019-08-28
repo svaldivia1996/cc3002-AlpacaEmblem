@@ -9,6 +9,7 @@ import model.units.IUnit;
  * base damage and is strong or weak against other type of weapons.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public interface IEquipableItem {
@@ -45,4 +46,9 @@ public interface IEquipableItem {
    * @return the maximum range of the item
    */
   int getMaxRange();
+
+  /**
+   * The Item is equipped
+   */
+  void attackedBy;
 }
