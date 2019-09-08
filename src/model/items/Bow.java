@@ -3,7 +3,10 @@ package model.items;
 import model.units.IUnit;
 
 /**
+ * This class represents a Bow.
+ * Bows cannot have a minimum range of 2
  * @author Ignacio Slater Muñoz
+ *
  * @since 1.0
  */
 public class Bow extends AbstractItem {
