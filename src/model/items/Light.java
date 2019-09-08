@@ -1,6 +1,8 @@
 package model.items;
 
 
+import model.units.IUnit;
+
 /**
  * This class represents a Light spell.
  *
@@ -19,5 +21,10 @@ public class Light extends AbstractItem {
      */
     public Light(String name, int power, int minRange, int maxRange) {
         super(name, power, minRange, maxRange);
+    }
+
+    @Override
+    public void equipLightTo(IUnit unit) {
+        this.equipTo(unit);
     }
 }

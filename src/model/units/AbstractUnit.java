@@ -43,6 +43,8 @@ public abstract class AbstractUnit implements IUnit {
    *     the current position of this unit on the map
    * @param maxItems
    *     maximum amount of items this unit can carry
+   * @param items
+   *     the items carried by this unit
    */
   protected AbstractUnit(final int hitPoints, final int movement,
       final Location location, final int maxItems, final IEquipableItem... items) {

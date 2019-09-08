@@ -9,10 +9,17 @@ import model.map.Location;
  * A fighter is a unit that can only use axe type weapons.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public class Fighter extends AbstractUnit {
-
+  /**
+   * Creates a new Fighter
+   * @param hitPoints maximum hit points of the unit
+   * @param movement the amount of cells this unit can move
+   * @param location the initial location of this unit
+   * @param items the items carried by this unit
+   */
   public Fighter(final int hitPoints, final int movement, final Location location,
       IEquipableItem... items) {
     super(hitPoints, movement, location, 3, items);

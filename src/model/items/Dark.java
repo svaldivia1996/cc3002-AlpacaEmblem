@@ -1,6 +1,8 @@
 package model.items;
 
 
+import model.units.IUnit;
+
 /**
  * This class represents a Dark spell.
  *
@@ -19,5 +21,10 @@ public class Dark extends AbstractItem {
      */
     public Dark(String name, int power, int minRange, int maxRange) {
         super(name, power, minRange, maxRange);
+    }
+
+    @Override
+    public void equipDarkTo(IUnit unit) {
+        this.equipTo(unit);
     }
 }

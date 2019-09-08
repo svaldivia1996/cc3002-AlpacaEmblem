@@ -22,6 +22,8 @@ public class Hero extends AbstractUnit {
    *     the maximum amount of damage a unit can sustain
    * @param movement
    *     the number of panels a unit can move
+   * @param location the initial location of the unit
+   * @param items the items carried by the unit
    */
   public Hero(final int hitPoints, final int movement, final Location location,
       IEquipableItem... items) {

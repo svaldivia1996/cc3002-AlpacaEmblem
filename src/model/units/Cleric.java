@@ -15,12 +15,14 @@ import model.map.Location;
 public class Cleric extends AbstractUnit {
 
   /**
-   * Creates a new Unit.
+   * Creates a new Cleric.
    *
    * @param hitPoints
    *     the maximum amount of damage a unit can sustain
    * @param movement
    *     the number of panels a unit can move
+   * @param location the initial location of this unit
+   * @param items the items carried by this unit
    */
   public Cleric(final int hitPoints, final int movement, final Location location,
       IEquipableItem... items) {

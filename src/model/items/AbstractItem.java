@@ -82,5 +82,14 @@ public abstract class AbstractItem implements IEquipableItem {
   @Override
   public void equipSwordTo(final IUnit unit){}
 
+  @Override
+  public void equipAnimaTo(final IUnit unit){}
+
+  @Override
+  public void equipDarkTo(final IUnit unit){}
+
+  @Override
+  public void equipLightTo(final IUnit unit){}
+
 
 }

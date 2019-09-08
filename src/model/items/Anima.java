@@ -1,6 +1,8 @@
 package model.items;
 
 
+import model.units.IUnit;
+
 /**
  * This class represents a Anima spell.
  *
@@ -20,5 +22,10 @@ public class Anima extends AbstractItem{
      */
     public Anima(String name, int power, int minRange, int maxRange) {
         super(name, power, minRange, maxRange);
+    }
+
+    @Override
+    public void equipAnimaTo(IUnit unit) {
+        this.equipTo(unit);
     }
 }
