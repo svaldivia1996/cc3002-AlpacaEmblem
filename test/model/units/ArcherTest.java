@@ -41,4 +41,27 @@ public class ArcherTest extends AbstractTestUnit {
     archer.equipItem(bow);
     assertEquals(bow, archer.getEquippedItem());
   }
+
+  /**
+   * The archer cannot attack adjacent enemies
+   */
+  @Test
+  public void adjacentAttackTest(){
+    archer.equipItem(bow);
+    assertEquals(archer.getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    archer.attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+  }
+
+  @Test
+  @Override
+  public void normalAttackTest(){
+    archer.equipItem(bow);
+    getTargetAlpaca().moveTo(getField().getCell(0,2));
+    assertEquals(archer.getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    archer.attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+  }
 }

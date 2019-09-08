@@ -138,4 +138,7 @@ public interface ITestUnit {
    */
   Light getLight();
 
+  @Test
+  void normalAttackTest();
+
 }

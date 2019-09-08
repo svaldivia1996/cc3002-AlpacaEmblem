@@ -35,4 +35,17 @@ public class ClericTest extends AbstractTestUnit {
     cleric.equipItem(staff);
     assertEquals(staff, cleric.getEquippedItem());
   }
+
+  /**
+   * The cleric cannot attack
+   */
+  @Test
+  @Override
+  public void normalAttackTest(){
+    cleric.equipItem(staff);
+    assertEquals(cleric.getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    cleric.attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+  }
 }

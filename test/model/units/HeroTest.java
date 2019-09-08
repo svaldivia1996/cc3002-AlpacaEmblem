@@ -35,4 +35,14 @@ public class HeroTest extends AbstractTestUnit {
     hero.equipItem(spear);
     assertEquals(spear, hero.getEquippedItem());
   }
+
+  @Test
+  @Override
+  public void normalAttackTest(){
+    hero.equipItem(spear);
+    assertEquals(hero.getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    hero.attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+  }
 }

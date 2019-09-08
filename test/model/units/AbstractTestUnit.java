@@ -256,7 +256,14 @@ public abstract class AbstractTestUnit implements ITestUnit {
     return targetAlpaca;
   }
 
-
+  @Override
+  @Test
+  public void normalAttackTest(){
+    assertEquals(getTestUnit().getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    getTestUnit().attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+  }
 
 
 }

@@ -38,4 +38,14 @@ public class FighterTest extends AbstractTestUnit {
     fighter.equipItem(axe);
     assertEquals(axe, fighter.getEquippedItem());
   }
+
+  @Test
+  @Override
+  public void normalAttackTest(){
+    fighter.equipItem(axe);
+    assertEquals(fighter.getCurrentHitPoints(),50);
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    fighter.attack(getTargetAlpaca());
+    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+  }
 }

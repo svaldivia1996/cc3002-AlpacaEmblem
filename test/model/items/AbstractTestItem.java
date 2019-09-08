@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import model.units.Alpaca;
 import model.units.IUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,7 @@ public abstract class AbstractTestItem {
    * Sets the unit that will be equipped with the test item
    */
   public abstract void setTestUnit();
+
 
   /**
    * Checks that the tested item cannot have ranges outside of certain bounds.
@@ -116,4 +118,5 @@ public abstract class AbstractTestItem {
    * @return a unit that can equip the item being tested
    */
   public abstract IUnit getTestUnit();
+
 }
