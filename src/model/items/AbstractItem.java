@@ -66,5 +66,11 @@ public abstract class AbstractItem implements IEquipableItem {
     return maxRange;
   }
 
+  @Override
+  public void equipBowTo(final IUnit unit){}
+
+  @Override
+  public void equipAxeTo(final IUnit unit){}
+
 
 }

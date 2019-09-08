@@ -18,7 +18,7 @@ public interface IEquipableItem {
    * Equips this item to a unit.
    *
    * @param unit
-   *     the unit that will be quipped with the item
+   *     the unit that will be equipped with the item
    */
   void equipTo(IUnit unit);
 
@@ -47,5 +47,16 @@ public interface IEquipableItem {
    */
   int getMaxRange();
 
+  /**
+   * The unit equips a bow
+   * @param unit that will be equipped with the item
+   */
+  void equipBowTo(IUnit unit);
+
+  /**
+   * The unit equips a axe
+   * @param unit that will be equipped with the item
+   */
+  void equipAxeTo(IUnit unit);
 
 }
