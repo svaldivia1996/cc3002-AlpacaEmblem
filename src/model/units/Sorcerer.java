@@ -21,7 +21,7 @@ public class Sorcerer extends AbstractUnit {
      * @param location  the current position of this unit on the map
      * @param items the items carried by this unit
      */
-    protected Sorcerer(int hitPoints, int movement, Location location, IEquipableItem... items) {
+    public Sorcerer(int hitPoints, int movement, Location location, IEquipableItem... items) {
         super(hitPoints, movement, location, 3, items);
     }
 
