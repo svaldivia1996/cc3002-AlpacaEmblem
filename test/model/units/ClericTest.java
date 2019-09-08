@@ -43,9 +43,9 @@ public class ClericTest extends AbstractTestUnit {
   @Override
   public void normalAttackTest(){
     cleric.equipItem(staff);
-    assertEquals(cleric.getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,cleric.getCurrentHitPoints());
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     cleric.attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
   }
 }

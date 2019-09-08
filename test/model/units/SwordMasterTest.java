@@ -40,9 +40,9 @@ public class SwordMasterTest extends AbstractTestUnit {
   @Override
   public void normalAttackTest(){
     swordMaster.equipItem(sword);
-    assertEquals(swordMaster.getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,swordMaster.getCurrentHitPoints());
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     swordMaster.attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+    assertEquals(40,getTargetAlpaca().getCurrentHitPoints());
   }
 }

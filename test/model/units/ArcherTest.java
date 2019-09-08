@@ -48,10 +48,10 @@ public class ArcherTest extends AbstractTestUnit {
   @Test
   public void adjacentAttackTest(){
     archer.equipItem(bow);
-    assertEquals(archer.getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,archer.getCurrentHitPoints());
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     archer.attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
   }
 
   @Test
@@ -59,9 +59,9 @@ public class ArcherTest extends AbstractTestUnit {
   public void normalAttackTest(){
     archer.equipItem(bow);
     getTargetAlpaca().moveTo(getField().getCell(0,2));
-    assertEquals(archer.getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+    assertEquals(50,archer.getCurrentHitPoints());
+    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     archer.attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+    assertEquals(40,getTargetAlpaca().getCurrentHitPoints());
   }
 }

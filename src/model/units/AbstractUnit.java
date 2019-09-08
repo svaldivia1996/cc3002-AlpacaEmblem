@@ -157,7 +157,9 @@ public abstract class AbstractUnit implements IUnit {
 
   @Override
   public void receiveAttack(IEquipableItem item) {
-    this.currentHitPoints -= item.getPower();
+    if(item != null) {
+      this.currentHitPoints -= item.getPower();
+    }
   }
 
   @Override

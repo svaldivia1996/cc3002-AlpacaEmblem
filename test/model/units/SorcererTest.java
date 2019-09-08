@@ -68,17 +68,17 @@ public class SorcererTest extends AbstractTestUnit{
     @Test
     @Override
     public void normalAttackTest(){
-        assertEquals(sorcerer.getCurrentHitPoints(),50);
-        assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
+        assertEquals(50,sorcerer.getCurrentHitPoints());
+        assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
         sorcerer.equipItem(anima);
         sorcerer.attack(getTargetAlpaca());
-        assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+        assertEquals(40,getTargetAlpaca().getCurrentHitPoints());
         sorcerer.equipItem(dark);
         sorcerer.attack(getTargetAlpaca());
-        assertEquals(getTargetAlpaca().getCurrentHitPoints(),30);
+        assertEquals(30,getTargetAlpaca().getCurrentHitPoints());
         sorcerer.equipItem(light);
         sorcerer.attack(getTargetAlpaca());
-        assertEquals(getTargetAlpaca().getCurrentHitPoints(),20);
+        assertEquals(20,getTargetAlpaca().getCurrentHitPoints());
     }
 
 }
