@@ -71,4 +71,10 @@ public interface IEquipableItem {
    */
   void equipStaffTo(IUnit unit);
 
+  /**
+   * The unit equips a sword
+   * @param unit that will be equipped with the sword
+   */
+  void equipSwordTo(IUnit unit);
+
 }
