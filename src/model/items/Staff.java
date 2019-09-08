@@ -1,11 +1,14 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a <i>Staff</i> type item.
  * <p>
  * A staff is an item that can heal other units nut cannot counter any attack
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public class Staff extends AbstractItem {
@@ -24,5 +27,10 @@ public class Staff extends AbstractItem {
    */
   public Staff(final String name, final int power, final int minRange, final int maxRange) {
     super(name, power, minRange, maxRange);
+  }
+
+  @Override
+  public void equipStaffTo(IUnit unit){
+    this.equipTo(unit);
   }
 }

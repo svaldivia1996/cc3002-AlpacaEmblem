@@ -1,11 +1,14 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a <i>spear</i>.
  * <p>
  * Spears are strong against swords and weak against axes
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public class Spear extends AbstractItem {
@@ -24,5 +27,10 @@ public class Spear extends AbstractItem {
    */
   public Spear(final String name, final int power, final int minRange, final int maxRange) {
     super(name, power, minRange, maxRange);
+  }
+
+  @Override
+  public void equipSpearTo(IUnit unit){
+    this.equipTo(unit);
   }
 }

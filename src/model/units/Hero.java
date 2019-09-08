@@ -10,6 +10,7 @@ import model.map.Location;
  * This unit <b>can only use spear weapons</b>.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public class Hero extends AbstractUnit {
@@ -35,8 +36,9 @@ public class Hero extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    if (item instanceof Spear) {
+    item.equipSpearTo(this);
+    /*if (item instanceof Spear) {
       equippedItem = item;
-    }
+    }*/
   }
 }

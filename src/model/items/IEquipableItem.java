@@ -49,14 +49,26 @@ public interface IEquipableItem {
 
   /**
    * The unit equips a bow
-   * @param unit that will be equipped with the item
+   * @param unit that will be equipped with the bow
    */
   void equipBowTo(IUnit unit);
 
   /**
-   * The unit equips a axe
-   * @param unit that will be equipped with the item
+   * The unit equips an axe
+   * @param unit that will be equipped with the axe
    */
   void equipAxeTo(IUnit unit);
+
+  /**
+   * The unit equips a spear
+   * @param unit that will be equipped with the spear
+   */
+  void equipSpearTo(IUnit unit);
+
+  /**
+   * The unit equips a staff
+   * @param unit that will be equipped with the staff
+   */
+  void equipStaffTo(IUnit unit);
 
 }

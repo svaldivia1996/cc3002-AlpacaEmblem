@@ -6,6 +6,7 @@ import model.units.IUnit;
  * Abstract class that defines some common information and behaviour between all items.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
 public abstract class AbstractItem implements IEquipableItem {
@@ -71,6 +72,12 @@ public abstract class AbstractItem implements IEquipableItem {
 
   @Override
   public void equipAxeTo(final IUnit unit){}
+
+  @Override
+  public void equipSpearTo(final IUnit unit){}
+
+  @Override
+  public void equipStaffTo(final IUnit unit){}
 
 
 }

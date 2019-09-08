@@ -9,6 +9,7 @@ import model.map.Location;
  * that it can receive attacks but can't counter attack any of those.
  *
  * @author Ignacio Slater Muñoz
+ * @author Sebastian valdivia Reyes
  * @since 1.0
  */
 public class Cleric extends AbstractUnit {
@@ -34,8 +35,9 @@ public class Cleric extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    if (item instanceof Staff) {
+    item.equipStaffTo(this);
+    /*if (item instanceof Staff) {
       equippedItem = item;
-    }
+    }*/
   }
 }
