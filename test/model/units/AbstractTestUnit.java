@@ -24,6 +24,9 @@ public abstract class AbstractTestUnit implements ITestUnit {
   protected Sword sword;
   protected Staff staff;
   protected Spear spear;
+  protected Anima anima;
+  protected Dark dark;
+  protected Light light;
 
   @Override
   public void setTargetAlpaca() {
@@ -68,6 +71,9 @@ public abstract class AbstractTestUnit implements ITestUnit {
     this.spear = new Spear("Spear", 10, 1, 2);
     this.staff = new Staff("Staff", 10, 1, 2);
     this.bow = new Bow("Bow", 10, 2, 3);
+    this.anima = new Anima("anima",10,1,3);
+    this.dark = new Dark("dark",10,1,3);
+    this.light = new Light("light", 10,1,3);
   }
 
   /**
@@ -176,6 +182,47 @@ public abstract class AbstractTestUnit implements ITestUnit {
     return bow;
   }
 
+  @Override
+  @Test
+  public  void equipAnimaTest(){
+    checkEquippedItem(getAnima());
+  }
+
+  /**
+   * @return the test anima
+   */
+  @Override
+  public Anima getAnima(){
+    return anima;
+  }
+
+  @Override
+  @Test
+  public void equipDarkTest(){
+    checkEquippedItem(getDark());
+  }
+
+  /**
+   * @return the test dark
+   */
+  @Override
+  public Dark getDark(){
+    return dark;
+  }
+
+  @Override
+  @Test
+  public void equipLightTest(){
+    checkEquippedItem(getLight());
+  }
+
+  @Override
+  public Light getLight(){
+    return light;
+  }
+
+
+
   /**
    * Checks if the unit moves correctly
    */
@@ -208,6 +255,8 @@ public abstract class AbstractTestUnit implements ITestUnit {
   public Alpaca getTargetAlpaca() {
     return targetAlpaca;
   }
+
+
 
 
 }

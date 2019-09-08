@@ -109,4 +109,33 @@ public interface ITestUnit {
    * @return the target Alpaca
    */
   Alpaca getTargetAlpaca();
+
+
+  @Test
+  void equipAnimaTest();
+
+  /**
+   *
+   * @return the test Anima
+   */
+  Anima getAnima();
+
+  @Test
+  void equipDarkTest();
+
+  /**
+   *
+   * @return the test Dark
+   */
+  Dark getDark();
+
+  @Test
+  void equipLightTest();
+
+  /**
+   *
+   * @return the test Light
+   */
+  Light getLight();
+
 }
