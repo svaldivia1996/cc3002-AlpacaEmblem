@@ -91,5 +91,71 @@ public abstract class AbstractItem implements IEquipableItem {
   @Override
   public void equipLightTo(final IUnit unit){}
 
+  @Override
+  public void attack(IEquipableItem target){
+    double dist = this.owner.getLocation().distanceTo(target.getOwner().getLocation());
+    if(!this.owner.isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange() && target != null){
+      target.receiveAttack(this);
+    }
+  }
+
+  @Override
+  public void receiveAxeAttack(Axe axe) {
+    receiveAttack(axe);
+  }
+
+  @Override
+  public void receiveSwordAttack(Sword sword) {
+    receiveAttack(sword);
+  }
+
+  @Override
+  public void receiveSpearAttack(Spear spear) {
+    receiveAttack(spear);
+  }
+
+  @Override
+  public void receiveStaffAttack(Staff staff) {
+    receiveAttack(staff);
+  }
+
+  @Override
+  public void receiveBowAttack(Bow bow) {
+    receiveAttack(bow);
+  }
+
+  @Override
+  public void receiveAnimaAttack(Anima anima) {
+    receiveAttack(anima);
+  }
+
+  @Override
+  public void receiveDarkAttack(Dark dark) {
+    receiveAttack(dark);
+  }
+
+  @Override
+  public void receiveLightAttack(Light light) {
+    receiveAttack(light);
+  }
+
+  @Override
+  public void receiveAttack(IEquipableItem item) {
+    if(item != null) {
+      this.owner.receiveDamage(item.getPower());
+    }
+  }
+
+  @Override
+  public void receiveEffectiveDamage(IEquipableItem item){
+    this.owner.receiveDamage(item.getPower()*1.5);
+  }
+
+  @Override
+  public void receiveNotEffectiveDamage(IEquipableItem item){
+    this.owner.receiveDamage(Math.max(0,item.getPower()-20));
+  }
+
+
 
 }

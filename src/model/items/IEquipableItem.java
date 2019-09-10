@@ -95,4 +95,79 @@ public interface IEquipableItem {
    * @param unit that will be equipped with the Light spell
    */
   void equipLightTo(IUnit unit);
+
+  /**
+   * Attacks another unit.
+   * @param target of the attack.
+   */
+  void attack(IEquipableItem target);
+
+  /**
+   * Receives a Axe attack.
+   * @param axe which is used to attack.
+   */
+  void receiveAxeAttack(Axe axe);
+
+  /**
+   * Receives a sword attack.
+   * @param sword which is used to attack.
+   */
+  void receiveSwordAttack(Sword sword);
+
+  /**
+   * Receives a spear attack.
+   * @param spear which is used to attack.
+   */
+  void receiveSpearAttack(Spear spear);
+
+  /**
+   * Receives a staff attack.
+   * @param staff which is used to attack.
+   */
+  void receiveStaffAttack(Staff staff);
+
+  /**
+   * Receives a bow attack.
+   * @param bow which is used to attack.
+   */
+  void receiveBowAttack(Bow bow);
+
+  /**
+   * Receives a anima spell attack.
+   * @param anima which is used to attack.
+   */
+  void receiveAnimaAttack(Anima anima);
+
+  /**
+   * Receives a dark spell attack.
+   * @param dark which is used to attack.
+   */
+  void receiveDarkAttack(Dark dark);
+
+  /**
+   * Receives a light spell attack
+   * @param light which is used to attack.
+   */
+  void receiveLightAttack(Light light);
+
+  /**
+   * Receives an attack.
+   * @param item the item used to attack.
+   */
+  void receiveAttack(IEquipableItem item);
+
+  /**
+   * Receives a Effective damage attack.
+   * @param item the item used to attack.
+   */
+  void receiveEffectiveDamage(IEquipableItem item);
+
+
+  /**
+   * receives a Not Effective damage attack.
+   * @param item the item used to attack.
+   */
+  void receiveNotEffectiveDamage(IEquipableItem item);
+
+
 }

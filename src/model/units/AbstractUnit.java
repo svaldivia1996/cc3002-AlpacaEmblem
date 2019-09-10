@@ -110,70 +110,29 @@ public abstract class AbstractUnit implements IUnit {
 
   @Override
   public void attack(IUnit other){
-    if(!this.isDead()){
-      other.receiveAttack(getEquippedItem());
+    double dist = this.getLocation().distanceTo(other.getLocation());
+    if(!this.isDead() && other.getEquippedItem() != null && dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){
+      this.getEquippedItem().attack(other.getEquippedItem());
+      //other.getEquippedItem().receiveAttack(getEquippedItem());
+      counterAttack(other);
+    }
+    else if (dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){
+      other.receiveDamage(this.getEquippedItem().getPower());
     }
   }
 
   @Override
-  public void receiveAxeAttack(Axe axe) {
-    receiveAttack(axe);
-  }
-
-  @Override
-  public void receiveSwordAttack(Sword sword) {
-    receiveAttack(sword);
-  }
-
-  @Override
-  public void receiveSpearAttack(Spear spear) {
-    receiveAttack(spear);
-  }
-
-  @Override
-  public void receiveStaffAttack(Staff staff) {
-    receiveAttack(staff);
-  }
-
-  @Override
-  public void receiveBowAttack(Bow bow) {
-    receiveAttack(bow);
-  }
-
-  @Override
-  public void receiveAnimaAttack(Anima anima) {
-    receiveAttack(anima);
-  }
-
-  @Override
-  public void receiveDarkAttack(Dark dark) {
-    receiveAttack(dark);
-  }
-
-  @Override
-  public void receiveLightAttack(Light light) {
-    receiveAttack(light);
-  }
-
-  @Override
-  public void receiveAttack(IEquipableItem item) {
-    if(item != null) {
-      this.currentHitPoints -= item.getPower();
+  public void counterAttack(IUnit other){
+    double dist = this.getLocation().distanceTo(other.getLocation());
+    if(!other.isDead() &&  dist<=other.getEquippedItem().getMaxRange() && dist>=other.getEquippedItem().getMinRange()){
+      this.getEquippedItem().receiveAttack(other.getEquippedItem());
     }
   }
 
   @Override
-  public void receiveEffectiveDamage(IEquipableItem item){
-    this.currentHitPoints -= item.getPower()*1.5;
+  public void receiveDamage(double damage) {
+    this.currentHitPoints -= damage;
   }
-
-  @Override
-  public void receiveNotEffectiveDamage(IEquipableItem item){
-    this.currentHitPoints -= Math.max(0,item.getPower()-20);
-  }
-
-
-
 
 
 }

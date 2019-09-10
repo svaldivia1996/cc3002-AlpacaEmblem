@@ -27,4 +27,29 @@ public class Dark extends AbstractItem {
     public void equipDarkTo(IUnit unit) {
         this.equipTo(unit);
     }
+
+    @Override
+    public void receiveLightAttack(Light light){
+        receiveEffectiveDamage(light);
+    }
+
+    @Override
+    public void receiveAnimaAttack(Anima anima){
+        receiveNotEffectiveDamage(anima);
+    }
+
+    @Override
+    public void receiveAxeAttack(Axe axe){
+        receiveEffectiveDamage(axe);
+    }
+
+    @Override
+    public void receiveSpearAttack(Spear spear){
+        receiveEffectiveDamage(spear);
+    }
+
+    @Override
+    public void receiveSwordAttack(Sword sword){
+        receiveEffectiveDamage(sword);
+    }
 }

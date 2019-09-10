@@ -58,7 +58,7 @@ public class ArcherTest extends AbstractTestUnit {
   @Override
   public void normalAttackTest(){
     archer.equipItem(bow);
-    getTargetAlpaca().moveTo(getField().getCell(0,2));
+    getTargetAlpaca().setLocation(getField().getCell(0,2));
     assertEquals(50,archer.getCurrentHitPoints());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     archer.attack(getTargetAlpaca());

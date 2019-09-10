@@ -28,4 +28,29 @@ public class Anima extends AbstractItem{
     public void equipAnimaTo(IUnit unit) {
         this.equipTo(unit);
     }
+
+    @Override
+    public void receiveDarkAttack(Dark dark){
+        receiveEffectiveDamage(dark);
+    }
+
+    @Override
+    public void receiveLightAttack(Light light){
+        receiveNotEffectiveDamage(light);
+    }
+
+    @Override
+    public void receiveAxeAttack(Axe axe){
+        receiveEffectiveDamage(axe);
+    }
+
+    @Override
+    public void receiveSpearAttack(Spear spear){
+        receiveEffectiveDamage(spear);
+    }
+
+    @Override
+    public void receiveSwordAttack(Sword sword){
+        receiveEffectiveDamage(sword);
+    }
 }

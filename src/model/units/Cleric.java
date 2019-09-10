@@ -42,4 +42,9 @@ public class Cleric extends AbstractUnit {
       equippedItem = item;
     }*/
   }
+
+  @Override
+  public void attack(IUnit unit){
+    // Method body intentionally left empty
+  }
 }

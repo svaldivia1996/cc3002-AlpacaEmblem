@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author Ignacio Slater Muñoz
+ * @author Sebastian Valdivia Reyes
  */
 public class ClericTest extends AbstractTestUnit {
 

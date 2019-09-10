@@ -39,6 +39,7 @@ public class FighterTest extends AbstractTestUnit {
     assertEquals(axe, fighter.getEquippedItem());
   }
 
+
   @Test
   @Override
   public void normalAttackTest(){

@@ -33,4 +33,9 @@ public class Staff extends AbstractItem {
   public void equipStaffTo(IUnit unit){
     this.equipTo(unit);
   }
+
+  @Override
+  public void attack(IEquipableItem target){
+    // Method body intentionally left empty
+  }
 }

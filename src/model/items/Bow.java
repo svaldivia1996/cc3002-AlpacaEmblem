@@ -36,4 +36,5 @@ public class Bow extends AbstractItem {
   public void equipBowTo(IUnit unit){
     this.equipTo(unit);
   }
+
 }

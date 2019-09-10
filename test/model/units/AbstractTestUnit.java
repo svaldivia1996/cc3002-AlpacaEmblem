@@ -259,6 +259,9 @@ public abstract class AbstractTestUnit implements ITestUnit {
   @Override
   @Test
   public void normalAttackTest(){
+    getTestUnit().equipItem(getAxe());
+    getTestUnit().equipItem(getSpear());
+    getTestUnit().equipItem(getSword());
     assertEquals(getTestUnit().getCurrentHitPoints(),50);
     assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
     getTestUnit().attack(getTargetAlpaca());
