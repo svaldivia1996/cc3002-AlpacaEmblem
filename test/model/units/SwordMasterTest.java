@@ -56,8 +56,20 @@ public class SwordMasterTest extends AbstractTestUnit {
     getTargetSwordMaster().equipItem(sword2);
     assertEquals(50,swordMaster.getCurrentHitPoints());
     assertEquals(50,getTargetSwordMaster().getCurrentHitPoints());
-    swordMaster.attack(getTargetSwordMaster());
+    swordMaster.attack(getTargetSwordMaster());//sword vs sword
     assertEquals(40,getTargetSwordMaster().getCurrentHitPoints());
     assertEquals(40,swordMaster.getCurrentHitPoints());
+    getTargetSorcerer().equipItem(dark);
+    swordMaster.attack(getTargetSorcerer()); //sword vs dark
+    assertEquals(25,swordMaster.getCurrentHitPoints());
+    assertEquals(35,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().equipItem(light);
+    swordMaster.attack(getTargetSorcerer()); //sword vs light
+    assertEquals(10,swordMaster.getCurrentHitPoints());
+    assertEquals(20,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().equipItem(anima);
+    swordMaster.attack(getTargetSorcerer()); //sword vs anima
+    assertEquals(-5,swordMaster.getCurrentHitPoints());
+    assertEquals(5,getTargetSorcerer().getCurrentHitPoints());
   }
 }

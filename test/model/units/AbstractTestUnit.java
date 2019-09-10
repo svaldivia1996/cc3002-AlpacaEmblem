@@ -75,6 +75,8 @@ public abstract class AbstractTestUnit implements ITestUnit {
     setTargetHero();
     setTargetFighter();
     setTargetSwordMaster();
+    setTargetArcher();
+    setTargetSorcerer();
   }
 
   /**

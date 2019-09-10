@@ -73,9 +73,14 @@ public class ArcherTest extends AbstractTestUnit {
     getTargetArcher().equipItem(bow2);
     assertEquals(50,archer.getCurrentHitPoints());
     assertEquals(50,getTargetArcher().getCurrentHitPoints());
-    archer.attack(getTargetArcher());
+    archer.attack(getTargetArcher());//bow vs bow
     assertEquals(40,archer.getCurrentHitPoints());
     assertEquals(40,getTargetArcher().getCurrentHitPoints());
+    getTargetHero().setLocation(getField().getCell(0,2));
+    getTargetHero().equipItem(spear);
+    archer.attack(getTargetHero());//bow vs spear out of range
+    assertEquals(40,archer.getCurrentHitPoints());
+    assertEquals(40,getTargetHero().getCurrentHitPoints());
 
   }
 }

@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.Dark;
 import model.items.Spear;
 import org.junit.jupiter.api.Test;
 
@@ -59,8 +60,20 @@ public class HeroTest extends AbstractTestUnit {
     getTargetHero().equipItem(spear2);
     assertEquals(50,hero.getCurrentHitPoints());
     assertEquals(50,getTargetHero().getCurrentHitPoints());
-    hero.attack(getTargetHero());
+    hero.attack(getTargetHero());//spear vs spear
     assertEquals(40,getTargetHero().getCurrentHitPoints());
     assertEquals(40,hero.getCurrentHitPoints());
+    getTargetSorcerer().equipItem(dark);
+    hero.attack(getTargetSorcerer());//spear vs dark
+    assertEquals(25,hero.getCurrentHitPoints());
+    assertEquals(35,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().equipItem(anima);
+    hero.attack(getTargetSorcerer());//spear vs anima
+    assertEquals(10,hero.getCurrentHitPoints());
+    assertEquals(20,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().equipItem(light);
+    hero.attack(getTargetSorcerer());//spear vs light
+    assertEquals(-5,hero.getCurrentHitPoints());
+    assertEquals(5,getTargetSorcerer().getCurrentHitPoints());
   }
 }

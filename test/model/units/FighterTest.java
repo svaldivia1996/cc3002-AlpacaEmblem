@@ -60,17 +60,25 @@ public class FighterTest extends AbstractTestUnit {
     getTargetFighter().equipItem(axe2);
     getTargetSwordMaster().equipItem(sword);
     getTargetHero().equipItem(spear);
+    getTargetSorcerer().equipItem(anima);
     assertEquals(50, fighter.getCurrentHitPoints());
     assertEquals(50, getTargetFighter().getCurrentHitPoints());
     assertEquals(50, getTargetSwordMaster().getCurrentHitPoints());
-    fighter.attack(getTargetFighter());
+    fighter.attack(getTargetFighter());//Fighter vs Fighter
     assertEquals(40, getTargetFighter().getCurrentHitPoints());
     assertEquals(40, fighter.getCurrentHitPoints());
-    fighter.attack(getTargetSwordMaster());
+    fighter.attack(getTargetSwordMaster());//Fighter vs SwordMaster
     assertEquals(25, fighter.getCurrentHitPoints());
     assertEquals(50, getTargetSwordMaster().getCurrentHitPoints());
-    fighter.attack(getTargetHero());
+    fighter.attack(getTargetHero());//Fighter vs Hero
     assertEquals(25, fighter.getCurrentHitPoints());
     assertEquals(35, getTargetHero().getCurrentHitPoints());
+    fighter.attack(getTargetSorcerer());//Axe vs Anima
+    assertEquals(10, fighter.getCurrentHitPoints());
+    assertEquals(35, getTargetHero().getCurrentHitPoints());
+    getTargetSorcerer().equipItem(dark);
+    fighter.attack(getTargetSorcerer());//Axe vs Dark
+    assertEquals(-5, fighter.getCurrentHitPoints());//Caso Borde
+    assertEquals(20, getTargetSorcerer().getCurrentHitPoints());
   }
 }
