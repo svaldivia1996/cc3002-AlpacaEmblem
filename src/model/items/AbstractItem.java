@@ -94,7 +94,7 @@ public abstract class AbstractItem implements IEquipableItem {
   @Override
   public void attack(IEquipableItem target){
     double dist = this.owner.getLocation().distanceTo(target.getOwner().getLocation());
-    if(!this.owner.isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange() && target != null){
+    if(!this.owner.isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
       target.receiveAttack(this);
     }
   }
