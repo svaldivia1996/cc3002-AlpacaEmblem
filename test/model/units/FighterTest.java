@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.Axe;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -44,9 +45,32 @@ public class FighterTest extends AbstractTestUnit {
   @Override
   public void normalAttackTest(){
     fighter.equipItem(axe);
-    assertEquals(fighter.getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
-    fighter.attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+    assertEquals(50,fighter.getCurrentHitPoints());
+    assertEquals(50,getTargetHero().getCurrentHitPoints());
+    fighter.attack(getTargetHero());
+    assertEquals(40,getTargetHero().getCurrentHitPoints());
+    assertEquals(50,fighter.getCurrentHitPoints());
+  }
+
+  @Test
+  @Override
+  public void combatTest(){
+    Axe axe2= new Axe("axe", 10, 1, 2);
+    fighter.equipItem(axe);
+    getTargetFighter().equipItem(axe2);
+    getTargetSwordMaster().equipItem(sword);
+    getTargetHero().equipItem(spear);
+    assertEquals(50, fighter.getCurrentHitPoints());
+    assertEquals(50, getTargetFighter().getCurrentHitPoints());
+    assertEquals(50, getTargetSwordMaster().getCurrentHitPoints());
+    fighter.attack(getTargetFighter());
+    assertEquals(40, getTargetFighter().getCurrentHitPoints());
+    assertEquals(40, fighter.getCurrentHitPoints());
+    fighter.attack(getTargetSwordMaster());
+    assertEquals(25, fighter.getCurrentHitPoints());
+    assertEquals(50, getTargetSwordMaster().getCurrentHitPoints());
+    fighter.attack(getTargetHero());
+    assertEquals(25, fighter.getCurrentHitPoints());
+    assertEquals(35, getTargetHero().getCurrentHitPoints());
   }
 }

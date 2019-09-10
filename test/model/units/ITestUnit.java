@@ -30,6 +30,31 @@ public interface ITestUnit {
   void setTargetAlpaca();
 
   /**
+   * Set up targethero
+   */
+  void setTargetHero();
+
+  /**
+   * Set up targetFighter
+   */
+  void setTargetFighter();
+
+  /**
+   * Set up targetSwordMaster
+   */
+  void setTargetSwordMaster();
+
+  /**
+   * Set up targetArcher
+   */
+  void setTargetArcher();
+
+  /**
+   * Set up targetSorcerer
+   */
+  void setTargetSorcerer();
+
+  /**
    * Creates a set of testing weapons
    */
   void setWeapons();
@@ -110,6 +135,31 @@ public interface ITestUnit {
    */
   Alpaca getTargetAlpaca();
 
+  /**
+   * @return the target Hero
+   */
+  Hero getTargetHero();
+
+  /**
+   * @return the target Fighter
+   */
+  Fighter getTargetFighter();
+
+  /**
+   * @return the target SwordMaster
+   */
+  SwordMaster getTargetSwordMaster();
+
+  /**
+   * @return the target Archer
+   */
+  Archer getTargetArcher();
+
+  /**
+   * @return the target Sorcerer
+   */
+  Sorcerer getTargetSorcerer();
+
 
   @Test
   void equipAnimaTest();
@@ -138,7 +188,10 @@ public interface ITestUnit {
    */
   Light getLight();
 
+
   @Test
   void normalAttackTest();
 
+  @Test
+  void combatTest();
 }

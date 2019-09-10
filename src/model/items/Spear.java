@@ -30,6 +30,14 @@ public class Spear extends AbstractItem {
   }
 
   @Override
+  public void attack(IEquipableItem target){
+    double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+    if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+      target.receiveSpearAttack(this);
+    }
+  }
+
+  @Override
   public void equipSpearTo(IUnit unit){
     this.equipTo(unit);
   }

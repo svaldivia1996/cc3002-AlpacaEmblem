@@ -30,6 +30,14 @@ public class Sword extends AbstractItem {
   }
 
   @Override
+  public void attack(IEquipableItem target){
+    double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+    if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+      target.receiveSwordAttack(this);
+    }
+  }
+
+  @Override
   public void equipSwordTo(IUnit unit){
     this.equipTo(unit);
   }

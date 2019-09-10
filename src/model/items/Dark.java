@@ -29,6 +29,14 @@ public class Dark extends AbstractItem {
     }
 
     @Override
+    public void attack(IEquipableItem target){
+        double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+        if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+            target.receiveDarkAttack(this);
+        }
+    }
+
+    @Override
     public void receiveLightAttack(Light light){
         receiveEffectiveDamage(light);
     }

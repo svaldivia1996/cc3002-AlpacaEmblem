@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.Bow;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -63,5 +64,18 @@ public class ArcherTest extends AbstractTestUnit {
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     archer.attack(getTargetAlpaca());
     assertEquals(40,getTargetAlpaca().getCurrentHitPoints());
+  }
+
+  @Override
+  public  void combatTest(){
+    Bow bow2 = new Bow("Bow", 10, 2, 3);
+    archer.equipItem(bow);
+    getTargetArcher().equipItem(bow2);
+    assertEquals(50,archer.getCurrentHitPoints());
+    assertEquals(50,getTargetArcher().getCurrentHitPoints());
+    archer.attack(getTargetArcher());
+    assertEquals(40,archer.getCurrentHitPoints());
+    assertEquals(40,getTargetArcher().getCurrentHitPoints());
+
   }
 }

@@ -1,5 +1,6 @@
 package model.units;
 
+import model.items.Sword;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,8 +42,22 @@ public class SwordMasterTest extends AbstractTestUnit {
   public void normalAttackTest(){
     swordMaster.equipItem(sword);
     assertEquals(50,swordMaster.getCurrentHitPoints());
-    assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
-    swordMaster.attack(getTargetAlpaca());
-    assertEquals(40,getTargetAlpaca().getCurrentHitPoints());
+    assertEquals(50,getTargetHero().getCurrentHitPoints());
+    swordMaster.attack(getTargetHero());
+    assertEquals(40,getTargetHero().getCurrentHitPoints());
+    assertEquals(50,swordMaster.getCurrentHitPoints());
+  }
+
+  @Test
+  @Override
+  public void combatTest(){
+    Sword sword2 = new Sword("Sword",10,1,2);
+    swordMaster.equipItem(sword);
+    getTargetSwordMaster().equipItem(sword2);
+    assertEquals(50,swordMaster.getCurrentHitPoints());
+    assertEquals(50,getTargetSwordMaster().getCurrentHitPoints());
+    swordMaster.attack(getTargetSwordMaster());
+    assertEquals(40,getTargetSwordMaster().getCurrentHitPoints());
+    assertEquals(40,swordMaster.getCurrentHitPoints());
   }
 }

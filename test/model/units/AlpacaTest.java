@@ -36,4 +36,9 @@ public class AlpacaTest extends AbstractTestUnit {
     alpaca.attack(getTargetAlpaca());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
   }
+
+  @Override
+  public void combatTest() {
+
+  }
 }

@@ -30,6 +30,14 @@ public class Axe extends AbstractItem {
     }
 
     @Override
+    public void attack(IEquipableItem target){
+        double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+        if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+            target.receiveAxeAttack(this);
+        }
+    }
+
+    @Override
     public void equipAxeTo(IUnit unit){
         this.equipTo(unit);
     }

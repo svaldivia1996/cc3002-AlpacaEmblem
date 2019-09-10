@@ -18,6 +18,11 @@ import org.junit.jupiter.api.Test;
 public abstract class AbstractTestUnit implements ITestUnit {
 
   protected Alpaca targetAlpaca;
+  protected Hero targetHero;
+  protected Fighter targetFighter;
+  protected SwordMaster targetSwordMaster;
+  protected Archer targetArcher;
+  protected Sorcerer targetSorcerer;
   protected Bow bow;
   protected Field field;
   protected Axe axe;
@@ -33,6 +38,31 @@ public abstract class AbstractTestUnit implements ITestUnit {
     targetAlpaca = new Alpaca(50, 2, field.getCell(1, 0));
   }
 
+  @Override
+  public void setTargetHero() {
+    targetHero = new Hero(50, 2, field.getCell(1, 0));
+  }
+
+  @Override
+  public void setTargetFighter() {
+    targetFighter = new Fighter(50, 2, field.getCell(1, 0));
+  }
+
+  @Override
+  public void setTargetSwordMaster(){
+    targetSwordMaster = new SwordMaster(50, 2, field.getCell(1, 0));
+  }
+
+  @Override
+  public void setTargetArcher(){
+    targetArcher = new Archer(50,2,field.getCell(0, 2));
+  }
+
+  @Override
+  public void setTargetSorcerer(){
+    targetSorcerer = new Sorcerer(50, 2, field.getCell(1, 0));
+  }
+
   /**
    * Sets up the units and weapons to be tested
    */
@@ -42,6 +72,9 @@ public abstract class AbstractTestUnit implements ITestUnit {
     setTestUnit();
     setTargetAlpaca();
     setWeapons();
+    setTargetHero();
+    setTargetFighter();
+    setTargetSwordMaster();
   }
 
   /**
@@ -256,17 +289,46 @@ public abstract class AbstractTestUnit implements ITestUnit {
     return targetAlpaca;
   }
 
+  /**
+   * @return the target Hero
+   */
   @Override
-  @Test
-  public void normalAttackTest(){
-    getTestUnit().equipItem(getAxe());
-    getTestUnit().equipItem(getSpear());
-    getTestUnit().equipItem(getSword());
-    assertEquals(getTestUnit().getCurrentHitPoints(),50);
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),50);
-    getTestUnit().attack(getTargetAlpaca());
-    assertEquals(getTargetAlpaca().getCurrentHitPoints(),40);
+  public Hero getTargetHero() {
+    return targetHero;
   }
+
+  /**
+   * @return the target Fighter
+   */
+  @Override
+  public Fighter getTargetFighter(){
+    return targetFighter;
+  }
+
+  /**
+   * @return the target SwordMaster
+   */
+  @Override
+  public SwordMaster getTargetSwordMaster(){
+    return targetSwordMaster;
+  }
+
+  /**
+   * @return the target Archer
+   */
+  @Override
+  public Archer getTargetArcher(){
+    return targetArcher;
+  }
+
+  /**
+   * @return the target Sorcerer
+   */
+  @Override
+  public Sorcerer getTargetSorcerer(){
+    return targetSorcerer;
+  }
+
 
 
 }

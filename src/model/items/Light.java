@@ -24,6 +24,13 @@ public class Light extends AbstractItem {
     }
 
     @Override
+    public void attack(IEquipableItem target){
+        double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+        if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+            target.receiveLightAttack(this);
+        }
+    }
+    @Override
     public void equipLightTo(IUnit unit) {
         this.equipTo(unit);
     }

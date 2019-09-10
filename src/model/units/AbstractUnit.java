@@ -125,7 +125,7 @@ public abstract class AbstractUnit implements IUnit {
   public void counterAttack(IUnit other){
     double dist = this.getLocation().distanceTo(other.getLocation());
     if(!other.isDead() &&  dist<=other.getEquippedItem().getMaxRange() && dist>=other.getEquippedItem().getMinRange()){
-      this.getEquippedItem().receiveAttack(other.getEquippedItem());
+      other.getEquippedItem().attack(this.getEquippedItem());
     }
   }
 
