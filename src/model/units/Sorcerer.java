@@ -33,9 +33,10 @@ public class Sorcerer extends AbstractUnit {
      */
     @Override
     public void equipItem(IEquipableItem item) {
-        item.equipAnimaTo(this);
-        item.equipDarkTo(this);
-        item.equipLightTo(this);
-
+        if (this.getItems().contains(item)) {
+            item.equipAnimaTo(this);
+            item.equipDarkTo(this);
+            item.equipLightTo(this);
+        }
     }
 }

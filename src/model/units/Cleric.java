@@ -37,10 +37,9 @@ public class Cleric extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    item.equipStaffTo(this);
-    /*if (item instanceof Staff) {
-      equippedItem = item;
-    }*/
+    if (this.getItems().contains(item)) {
+      item.equipStaffTo(this);
+    }
   }
 
   @Override

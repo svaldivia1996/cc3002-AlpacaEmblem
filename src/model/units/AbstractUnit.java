@@ -86,6 +86,18 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   @Override
+  public void addItem(IEquipableItem item){
+    if(this.items.size()<= 3) {
+      this.items.add(item);
+    }
+  }
+
+  @Override
+  public void removeItem(IEquipableItem item){
+    this.items.remove(item);
+  }
+
+  @Override
   public Location getLocation() {
     return location;
   }
@@ -113,7 +125,6 @@ public abstract class AbstractUnit implements IUnit {
     double dist = this.getLocation().distanceTo(other.getLocation());
     if(!this.isDead() && other.getEquippedItem() != null && dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){
       this.getEquippedItem().attack(other.getEquippedItem());
-      //other.getEquippedItem().receiveAttack(getEquippedItem());
       counterAttack(other);
     }
     else if (dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){

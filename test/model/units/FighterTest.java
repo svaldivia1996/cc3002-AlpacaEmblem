@@ -36,6 +36,7 @@ public class FighterTest extends AbstractTestUnit {
   @Override
   public void equipAxeTest() {
     assertNull(fighter.getEquippedItem());
+    fighter.addItem(axe);
     fighter.equipItem(axe);
     assertEquals(axe, fighter.getEquippedItem());
   }
@@ -44,6 +45,7 @@ public class FighterTest extends AbstractTestUnit {
   @Test
   @Override
   public void normalAttackTest(){
+    fighter.addItem(axe);
     fighter.equipItem(axe);
     assertEquals(50,fighter.getCurrentHitPoints());
     assertEquals(50,getTargetHero().getCurrentHitPoints());
@@ -56,10 +58,15 @@ public class FighterTest extends AbstractTestUnit {
   @Override
   public void combatTest(){
     Axe axe2= new Axe("axe", 10, 1, 2);
+    fighter.addItem(axe);
     fighter.equipItem(axe);
+    getTargetFighter().addItem(axe2);
     getTargetFighter().equipItem(axe2);
+    getTargetSwordMaster().addItem(sword);
     getTargetSwordMaster().equipItem(sword);
+    getTargetHero().addItem(spear);
     getTargetHero().equipItem(spear);
+    getTargetSorcerer().addItem(anima);
     getTargetSorcerer().equipItem(anima);
     assertEquals(50, fighter.getCurrentHitPoints());
     assertEquals(50, getTargetFighter().getCurrentHitPoints());
@@ -76,6 +83,7 @@ public class FighterTest extends AbstractTestUnit {
     fighter.attack(getTargetSorcerer());//Axe vs Anima
     assertEquals(10, fighter.getCurrentHitPoints());
     assertEquals(35, getTargetHero().getCurrentHitPoints());
+    getTargetSorcerer().addItem(dark);
     getTargetSorcerer().equipItem(dark);
     fighter.attack(getTargetSorcerer());//Axe vs Dark
     assertEquals(-5, fighter.getCurrentHitPoints());//Caso Borde

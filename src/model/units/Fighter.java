@@ -33,9 +33,8 @@ public class Fighter extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    item.equipAxeTo(this);
-    /*if (item instanceof Axe) {
-      equippedItem = item;
-    }*/
+    if (this.getItems().contains(item)) {
+      item.equipAxeTo(this);
+    }
   }
 }

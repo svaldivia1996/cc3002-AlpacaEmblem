@@ -39,6 +39,7 @@ public class ArcherTest extends AbstractTestUnit {
   @Override
   public void equipBowTest() {
     assertNull(archer.getEquippedItem());
+    archer.addItem(bow);
     archer.equipItem(bow);
     assertEquals(bow, archer.getEquippedItem());
   }
@@ -48,6 +49,7 @@ public class ArcherTest extends AbstractTestUnit {
    */
   @Test
   public void adjacentAttackTest(){
+    archer.addItem(bow);
     archer.equipItem(bow);
     assertEquals(50,archer.getCurrentHitPoints());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
@@ -58,6 +60,7 @@ public class ArcherTest extends AbstractTestUnit {
   @Test
   @Override
   public void normalAttackTest(){
+    archer.addItem(bow);
     archer.equipItem(bow);
     getTargetAlpaca().setLocation(getField().getCell(0,2));
     assertEquals(50,archer.getCurrentHitPoints());
@@ -69,7 +72,9 @@ public class ArcherTest extends AbstractTestUnit {
   @Override
   public  void combatTest(){
     Bow bow2 = new Bow("Bow", 10, 2, 3);
+    archer.addItem(bow);
     archer.equipItem(bow);
+    getTargetArcher().addItem(bow2);
     getTargetArcher().equipItem(bow2);
     assertEquals(50,archer.getCurrentHitPoints());
     assertEquals(50,getTargetArcher().getCurrentHitPoints());
@@ -77,6 +82,7 @@ public class ArcherTest extends AbstractTestUnit {
     assertEquals(40,archer.getCurrentHitPoints());
     assertEquals(40,getTargetArcher().getCurrentHitPoints());
     getTargetHero().setLocation(getField().getCell(0,2));
+    getTargetHero().addItem(spear);
     getTargetHero().equipItem(spear);
     archer.attack(getTargetHero());//bow vs spear out of range
     assertEquals(40,archer.getCurrentHitPoints());

@@ -57,6 +57,16 @@ public interface IUnit {
     void setEquippedItem(IEquipableItem item);
 
     /**
+     * @param item add an item to the items
+     */
+    void addItem(IEquipableItem item);
+
+    /**
+     * @param item remove an item to the items
+     */
+    void removeItem(IEquipableItem item);
+
+    /**
      * @return the current location of the unit
      */
     Location getLocation();

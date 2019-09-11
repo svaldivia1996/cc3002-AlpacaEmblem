@@ -34,6 +34,7 @@ public class ClericTest extends AbstractTestUnit {
   @Override
   public void equipStaffTest() {
     assertNull(cleric.getEquippedItem());
+    cleric.addItem(staff);
     cleric.equipItem(staff);
     assertEquals(staff, cleric.getEquippedItem());
   }
@@ -41,7 +42,9 @@ public class ClericTest extends AbstractTestUnit {
   @Test
   @Override
   public void normalAttackTest() {
+    cleric.addItem(staff);
     cleric.equipItem(staff);
+    getTargetHero().addItem(spear);
     getTargetHero().equipItem(spear);
     assertEquals(50,cleric.getCurrentHitPoints());
     assertEquals(50,getTargetHero().getCurrentHitPoints());
@@ -58,7 +61,9 @@ public class ClericTest extends AbstractTestUnit {
   public void combatTest(){
     Cleric cleric2 = new Cleric(50,3,field.getCell(1, 0));
     Staff staff2 = new Staff("Staff", 10, 1, 2);
+    cleric2.addItem(staff2);
     cleric2.equipItem(staff2);
+    cleric.addItem(staff);
     cleric.equipItem(staff);
     assertEquals(50,cleric.getCurrentHitPoints());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
@@ -70,12 +75,14 @@ public class ClericTest extends AbstractTestUnit {
     cleric.heal(cleric2);//Trying to OverHeal
     assertEquals(50,cleric.getCurrentHitPoints());
     assertEquals(50,cleric2.getCurrentHitPoints());
+    targetFighter.addItem(axe);
     targetFighter.equipItem(axe);
     targetFighter.setLocation(getField().getCell(0,0));
     targetFighter.attack(cleric2);//
     assertEquals(40,cleric2.getCurrentHitPoints());
     cleric.heal(cleric2);//normal heal
     assertEquals(50,cleric2.getCurrentHitPoints());
+    getTargetHero().addItem(spear);
     getTargetHero().equipItem(spear);
     targetFighter.attack(targetHero);
     assertEquals(50,targetFighter.getCurrentHitPoints());

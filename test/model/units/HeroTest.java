@@ -37,6 +37,7 @@ public class HeroTest extends AbstractTestUnit {
   @Test
   public void equipSpearTest() {
     assertNull(hero.getEquippedItem());
+    hero.addItem(spear);
     hero.equipItem(spear);
     assertEquals(spear, hero.getEquippedItem());
   }
@@ -44,6 +45,7 @@ public class HeroTest extends AbstractTestUnit {
   @Test
   @Override
   public void normalAttackTest(){
+    hero.addItem(spear);
     hero.equipItem(spear);
     assertEquals(50,hero.getCurrentHitPoints());
     assertEquals(50,getTargetHero().getCurrentHitPoints());
@@ -56,26 +58,32 @@ public class HeroTest extends AbstractTestUnit {
   @Override
   public void combatTest(){
     Spear spear2 = new Spear("Spear", 10, 1, 2);
+    hero.addItem(spear);
     hero.equipItem(spear);
+    getTargetHero().addItem(spear2);
     getTargetHero().equipItem(spear2);
     assertEquals(50,hero.getCurrentHitPoints());
     assertEquals(50,getTargetHero().getCurrentHitPoints());
     hero.attack(getTargetHero());//spear vs spear
     assertEquals(40,getTargetHero().getCurrentHitPoints());
     assertEquals(40,hero.getCurrentHitPoints());
+    getTargetSorcerer().addItem(dark);
     getTargetSorcerer().equipItem(dark);
     hero.attack(getTargetSorcerer());//spear vs dark
     assertEquals(25,hero.getCurrentHitPoints());
     assertEquals(35,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().addItem(anima);
     getTargetSorcerer().equipItem(anima);
     hero.attack(getTargetSorcerer());//spear vs anima
     assertEquals(10,hero.getCurrentHitPoints());
     assertEquals(20,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSorcerer().addItem(light);
     getTargetSorcerer().equipItem(light);
     hero.attack(getTargetSorcerer());//spear vs light
     assertEquals(-5,hero.getCurrentHitPoints());
     assertEquals(5,getTargetSorcerer().getCurrentHitPoints());
     getTargetSwordMaster().setLocation(getField().getCell(0,0));
+    getTargetSwordMaster().addItem(sword);
     getTargetSwordMaster().equipItem(sword);
     getTargetHero().attack(getTargetSwordMaster());//spear vs sword
     assertEquals(40,getTargetHero().getCurrentHitPoints());
