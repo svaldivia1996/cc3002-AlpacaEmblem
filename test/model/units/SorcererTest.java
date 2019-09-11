@@ -82,10 +82,12 @@ public class SorcererTest extends AbstractTestUnit{
         assertEquals(20,getTargetAlpaca().getCurrentHitPoints());
     }
 
+    @Test
     @Override
     public void combatTest() {
         Anima anima2 = new Anima("anima",10,1,3);
         getTargetSorcerer().equipItem(anima2);
+        sorcerer.equipItem(anima);
         getTargetFighter().equipItem(axe);
         assertEquals(50,sorcerer.getCurrentHitPoints());
         assertEquals(50,targetSorcerer.getCurrentHitPoints());
@@ -97,6 +99,7 @@ public class SorcererTest extends AbstractTestUnit{
         assertEquals(25,sorcerer.getCurrentHitPoints());
         assertEquals(40,targetSorcerer.getCurrentHitPoints());
         getTargetSorcerer().equipItem(light);//anima vs light
+        sorcerer.attack(getTargetSorcerer());
         assertEquals(25,sorcerer.getCurrentHitPoints());
         assertEquals(25,targetSorcerer.getCurrentHitPoints());
         sorcerer.attack(getTargetFighter());//anima vs axe
@@ -108,4 +111,21 @@ public class SorcererTest extends AbstractTestUnit{
         assertEquals(20,targetFighter.getCurrentHitPoints());
     }
 
+    @Test
+    public void CombatTest2(){
+        Anima anima2 = new Anima("anima",10,1,3);
+        getTargetSorcerer().equipItem(anima2);
+        sorcerer.equipItem(light);
+        assertEquals(50,sorcerer.getCurrentHitPoints());
+        assertEquals(50,targetSorcerer.getCurrentHitPoints());
+        sorcerer.attack(getTargetSorcerer());//light vs anima
+        assertEquals(35,sorcerer.getCurrentHitPoints());
+        assertEquals(50,targetSorcerer.getCurrentHitPoints());
+        getTargetSorcerer().equipItem(dark);
+        sorcerer.attack(getTargetSorcerer());//light vs dark
+        assertEquals(35,sorcerer.getCurrentHitPoints());
+        assertEquals(35,targetSorcerer.getCurrentHitPoints());
+
+
+    }
 }

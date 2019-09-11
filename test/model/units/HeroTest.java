@@ -75,5 +75,10 @@ public class HeroTest extends AbstractTestUnit {
     hero.attack(getTargetSorcerer());//spear vs light
     assertEquals(-5,hero.getCurrentHitPoints());
     assertEquals(5,getTargetSorcerer().getCurrentHitPoints());
+    getTargetSwordMaster().setLocation(getField().getCell(0,0));
+    getTargetSwordMaster().equipItem(sword);
+    getTargetHero().attack(getTargetSwordMaster());//spear vs sword
+    assertEquals(40,getTargetHero().getCurrentHitPoints());
+    assertEquals(35,getTargetSwordMaster().getCurrentHitPoints());
   }
 }

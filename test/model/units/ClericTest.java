@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.Staff;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -55,10 +56,16 @@ public class ClericTest extends AbstractTestUnit {
   @Test
   @Override
   public void combatTest(){
+    Cleric cleric2 = new Cleric(50,3,field.getCell(1, 0));
+    Staff staff2 = new Staff("Staff", 10, 1, 2);
+    cleric2.equipItem(staff2);
     cleric.equipItem(staff);
     assertEquals(50,cleric.getCurrentHitPoints());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     cleric.attack(getTargetAlpaca());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
+    staff.attack(staff2);//The only way to force a staff attack
+    assertEquals(50,cleric.getCurrentHitPoints());
+    assertEquals(50,cleric2.getCurrentHitPoints());
   }
 }

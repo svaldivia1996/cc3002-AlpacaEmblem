@@ -114,15 +114,15 @@ public abstract class AbstractItem implements IEquipableItem {
     receiveAttack(spear);
   }
 
-  @Override
+  /*@Override
   public void receiveStaffAttack(Staff staff) {
     receiveAttack(staff);
-  }
+  }*/
 
-  @Override
+  /*@Override
   public void receiveBowAttack(Bow bow) {
     receiveAttack(bow);
-  }
+  }*/
 
   @Override
   public void receiveAnimaAttack(Anima anima) {

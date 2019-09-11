@@ -120,17 +120,17 @@ public interface IEquipableItem {
    */
   void receiveSpearAttack(Spear spear);
 
-  /**
+  /*
    * Receives a staff attack.
    * @param staff which is used to attack.
    */
-  void receiveStaffAttack(Staff staff);
+  //void receiveStaffAttack(Staff staff);
 
-  /**
+  /*
    * Receives a bow attack.
    * @param bow which is used to attack.
    */
-  void receiveBowAttack(Bow bow);
+  //void receiveBowAttack(Bow bow);
 
   /**
    * Receives a anima spell attack.
