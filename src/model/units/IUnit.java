@@ -85,6 +85,12 @@ public interface IUnit {
     void attack(IUnit target);
 
     /**
+     * Heals another unit.
+     * @param target of the attack.
+     */
+    void heal(IUnit target);
+
+    /**
      * Performs a counterattack
      * @param target the unit who does the counter attack
      */
@@ -96,6 +102,9 @@ public interface IUnit {
      */
     void receiveDamage(double damage);
 
-
-
+    /**
+     * Receives a certain amount of heal.
+     * @param power the power of the heal.
+     */
+    void receiveHeal(int power);
 }

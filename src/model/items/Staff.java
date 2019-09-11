@@ -38,4 +38,12 @@ public class Staff extends AbstractItem {
   public void attack(IEquipableItem target){
     // Method body intentionally left empty
   }
+
+  @Override
+  public void heal(IEquipableItem target){
+    double dist = this.getOwner().getLocation().distanceTo(target.getOwner().getLocation());
+    if(!this.getOwner().isDead() && dist<=this.getMaxRange() && dist>=this.getMinRange()){
+      target.receiveHeal(this);
+    }
+  }
 }

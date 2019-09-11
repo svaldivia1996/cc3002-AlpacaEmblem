@@ -122,6 +122,17 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   @Override
+  public void heal(IUnit other){
+    double dist = this.getLocation().distanceTo(other.getLocation());
+    if(!this.isDead() && other.getEquippedItem() != null && dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){
+      this.getEquippedItem().heal(other.getEquippedItem());
+    }
+    else if (dist<=this.getEquippedItem().getMaxRange() && dist>=this.getEquippedItem().getMinRange()){
+      other.receiveHeal(this.getEquippedItem().getPower());
+    }
+  }
+
+  @Override
   public void counterAttack(IUnit other){
     double dist = this.getLocation().distanceTo(other.getLocation());
     if(!other.isDead() &&  dist<=other.getEquippedItem().getMaxRange() && dist>=other.getEquippedItem().getMinRange()){
@@ -132,6 +143,11 @@ public abstract class AbstractUnit implements IUnit {
   @Override
   public void receiveDamage(double damage) {
     this.currentHitPoints -= damage;
+  }
+
+  @Override
+  public void receiveHeal(int power) {
+    this.currentHitPoints = Math.min(this.maxHitPoints,this.currentHitPoints+power);
   }
 
 

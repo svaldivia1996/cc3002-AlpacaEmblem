@@ -103,6 +103,12 @@ public interface IEquipableItem {
   void attack(IEquipableItem target);
 
   /**
+   * Heals another unit.
+   * @param target of the attack.
+   */
+  void heal(IEquipableItem target);
+
+  /**
    * Receives a Axe attack.
    * @param axe which is used to attack.
    */
@@ -155,6 +161,14 @@ public interface IEquipableItem {
    * @param item the item used to attack.
    */
   void receiveAttack(IEquipableItem item);
+
+  /**
+   * Receives a heal.
+   * @param item the item used to heal.
+   */
+  void receiveHeal(IEquipableItem item);
+
+
 
   /**
    * Receives a Effective damage attack.

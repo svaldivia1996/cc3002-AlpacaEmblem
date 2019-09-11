@@ -64,8 +64,26 @@ public class ClericTest extends AbstractTestUnit {
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
     cleric.attack(getTargetAlpaca());
     assertEquals(50,getTargetAlpaca().getCurrentHitPoints());
-    staff.attack(staff2);//The only way to force a staff attack
+    staff.attack(staff2);//The only way to "force" a staff attack
     assertEquals(50,cleric.getCurrentHitPoints());
     assertEquals(50,cleric2.getCurrentHitPoints());
+    cleric.heal(cleric2);//Trying to OverHeal
+    assertEquals(50,cleric.getCurrentHitPoints());
+    assertEquals(50,cleric2.getCurrentHitPoints());
+    targetFighter.equipItem(axe);
+    targetFighter.setLocation(getField().getCell(0,0));
+    targetFighter.attack(cleric2);//
+    assertEquals(40,cleric2.getCurrentHitPoints());
+    cleric.heal(cleric2);//normal heal
+    assertEquals(50,cleric2.getCurrentHitPoints());
+    getTargetHero().equipItem(spear);
+    targetFighter.attack(targetHero);
+    assertEquals(50,targetFighter.getCurrentHitPoints());
+    assertEquals(35,targetHero.getCurrentHitPoints());
+    cleric.heal(targetFighter);
+    cleric.heal(targetHero);
+    assertEquals(50,targetFighter.getCurrentHitPoints());
+    assertEquals(45,targetHero.getCurrentHitPoints());
+
   }
 }

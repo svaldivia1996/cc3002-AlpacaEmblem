@@ -100,6 +100,11 @@ public abstract class AbstractItem implements IEquipableItem {
   }
 
   @Override
+  public void heal(IEquipableItem target){
+    // Method body intentionally left empty
+  }
+
+  @Override
   public void receiveAxeAttack(Axe axe) {
     receiveAttack(axe);
   }
@@ -143,6 +148,13 @@ public abstract class AbstractItem implements IEquipableItem {
   public void receiveAttack(IEquipableItem item) {
     if(item != null) {
       this.owner.receiveDamage(item.getPower());
+    }
+  }
+
+  @Override
+  public void receiveHeal(IEquipableItem item){
+    if(item != null) {
+      this.owner.receiveHeal(item.getPower());
     }
   }
 
