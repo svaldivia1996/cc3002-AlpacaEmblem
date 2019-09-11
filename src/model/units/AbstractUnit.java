@@ -94,7 +94,31 @@ public abstract class AbstractUnit implements IUnit {
 
   @Override
   public void removeItem(IEquipableItem item){
-    this.items.remove(item);
+      if(this.equippedItem == item){
+          equippedItem = null;
+      }
+      this.items.remove(item);
+  }
+
+  @Override
+  public void tradeItem(IEquipableItem item,IUnit other, IEquipableItem otherItem){
+      double dist =this.getLocation().distanceTo(other.getLocation());
+      if(dist ==1 && this.getItems().size() < 3 && item == null && other.getItems().contains(otherItem)){
+          this.addItem(otherItem);
+          other.removeItem(otherItem);
+      }
+      else if(dist ==1 && this.getItems().contains(item) && other.getItems().size() < 3 && otherItem == null){
+          other.addItem(item);
+          this.removeItem(item);
+      }
+      else if(dist ==1 && this.getItems().contains(item) && other.getItems().contains(otherItem)){
+          IEquipableItem aux = item;
+          this.removeItem(item);
+          this.addItem(otherItem);
+          other.removeItem(otherItem);
+          other.addItem(aux);
+      }
+
   }
 
   @Override

@@ -120,6 +120,12 @@ public interface ITestUnit {
   Bow getBow();
 
   /**
+   * Checks if the unit trades correctly
+   */
+  @Test
+  void TestTrade();
+
+  /**
    * Checks if the unit moves correctly
    */
   @Test

@@ -67,6 +67,14 @@ public interface IUnit {
     void removeItem(IEquipableItem item);
 
     /**
+     * Trade an item to anotherItem
+     * @param item the item  in the items list
+     * @param other the other unit in the trade
+     * @param otherItem the item tn the other unit items list
+     */
+    void tradeItem(IEquipableItem item,IUnit other, IEquipableItem otherItem);
+
+    /**
      * @return the current location of the unit
      */
     Location getLocation();
