@@ -10,7 +10,7 @@ import model.units.IUnit;
  * @author Sebastian Valdivia Reyes
  * @since 1.0
  */
-public class Anima extends AbstractItem{
+public class Anima extends MagicWeapon{
 
     /**
      * Creates a new Anima spell.
@@ -38,27 +38,18 @@ public class Anima extends AbstractItem{
     }
 
     @Override
-    public void receiveDarkAttack(Dark dark){
+    public void receiveAnimaAttack(Anima anima){
+        receiveAttack(anima);
+    }
+
+    @Override
+    public  void receiveDarkAttack(Dark dark){
         receiveEffectiveDamage(dark);
     }
 
     @Override
-    public void receiveLightAttack(Light light){
+    public  void receiveLightAttack(Light light){
         receiveNotEffectiveDamage(light);
     }
 
-    @Override
-    public void receiveAxeAttack(Axe axe){
-        receiveEffectiveDamage(axe);
-    }
-
-    @Override
-    public void receiveSpearAttack(Spear spear){
-        receiveEffectiveDamage(spear);
-    }
-
-    @Override
-    public void receiveSwordAttack(Sword sword){
-        receiveEffectiveDamage(sword);
-    }
 }
