@@ -81,6 +81,7 @@ public interface IUnit {
 
     /**
      * Sets a new location for this unit,
+     * @param location the new location
      */
     void setLocation(final Location location);
 
@@ -93,6 +94,7 @@ public interface IUnit {
      * Moves this unit to another location.
      * <p>
      * If the other location is out of this unit's movement range, the unit doesn't move.
+     * @param targetLocation  the target location
      */
     void moveTo(Location targetLocation);
 
@@ -118,7 +120,7 @@ public interface IUnit {
      * Receives a certain amount of damage.
      * @param damage the damage received.
      */
-    void receiveDamage(double damage);
+    void receiveDamage(int damage);
 
     /**
      * Receives a certain amount of heal.

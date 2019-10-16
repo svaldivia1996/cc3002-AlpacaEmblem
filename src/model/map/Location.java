@@ -142,7 +142,8 @@ public class Location {
 
   /**
    * Gets the shortest path to another node storing a set of already visited nodes
-   *
+   * @param otherNode the destiny node
+   * @param visited set of visited nodes
    * @return the distance between the nodes
    */
   private double shortestPathTo(final Location otherNode, final Set<Location> visited) {

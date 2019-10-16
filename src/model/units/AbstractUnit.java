@@ -176,8 +176,9 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   @Override
-  public void receiveDamage(double damage) {
+  public void receiveDamage(int damage) {
     this.currentHitPoints -= damage;
+    this.currentHitPoints =  Math.max(0 , this.currentHitPoints-damage);
   }
 
   @Override

@@ -11,6 +11,8 @@ import java.util.*;
  *
  * @author Ignacio Slater Muñoz
  * @since 1.0
+ * @author Sebastian Valdivia Reyes
+ * @since 2.0
  */
 public class Field {
 
