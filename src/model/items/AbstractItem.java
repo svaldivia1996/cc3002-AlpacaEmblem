@@ -160,7 +160,7 @@ public abstract class AbstractItem implements IEquipableItem {
 
   @Override
   public void receiveEffectiveDamage(IEquipableItem item){
-    this.owner.receiveDamage(item.getPower()*1.5);
+    this.owner.receiveDamage((int) (item.getPower()*1.5));
   }
 
   @Override

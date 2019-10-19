@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import model.items.IEquipableItem;
 import model.map.Field;
