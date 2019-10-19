@@ -12,6 +12,10 @@ import model.items.Staff;
 public class StaffFactory implements IEquipableItemFactory {
     private IEquipableItem staff;
 
+    /**
+     * creates a new Staff Factory.
+     * @param staff the item used as mold.
+     */
     public StaffFactory(Staff staff){
         this.staff = staff;
     }

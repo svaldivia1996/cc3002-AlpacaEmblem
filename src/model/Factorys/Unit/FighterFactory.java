@@ -12,6 +12,10 @@ import model.units.IUnit;
 public class FighterFactory implements IUnitFactory {
     private IUnit fighter;
 
+    /**
+     * Creates a new Fighter Factory.
+     * @param fighter the unit used as mold.
+     */
     public FighterFactory(Fighter fighter){
         this.fighter = fighter;
     }

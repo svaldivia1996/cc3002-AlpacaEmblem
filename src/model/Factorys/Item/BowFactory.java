@@ -12,6 +12,10 @@ import model.items.IEquipableItem;
 public class BowFactory implements IEquipableItemFactory {
     private IEquipableItem bow;
 
+    /**
+     * creates a new Bow Factory.
+     * @param bow the item used as mold.
+     */
     public BowFactory(Bow bow){
         this.bow = bow;
     }

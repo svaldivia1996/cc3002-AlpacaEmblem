@@ -7,6 +7,10 @@ import model.items.Sword;
 public class SwordFactory implements IEquipableItemFactory {
     private IEquipableItem sword;
 
+    /**
+     * creates a new Sword Factory.
+     * @param sword the item used as mold.
+     */
     public SwordFactory(Sword sword){
         this.sword = sword;
     }

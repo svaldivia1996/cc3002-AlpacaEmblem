@@ -12,6 +12,10 @@ import model.items.IEquipableItem;
 public class AnimaFactory implements IEquipableItemFactory {
     private Anima anima;
 
+    /**
+     * creates a new Anima Factory
+     * @param anima the spell used as mold
+     */
     public AnimaFactory(Anima anima){
         this.anima = anima;
     }

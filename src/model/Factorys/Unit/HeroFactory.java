@@ -12,6 +12,10 @@ import model.units.IUnit;
 public class HeroFactory implements IUnitFactory{
     private IUnit hero;
 
+    /**
+     * Creates a new Hero Factory.
+     * @param Hero the unit used as mold.
+     */
     public HeroFactory(Hero hero){
         this.hero = hero;
     }

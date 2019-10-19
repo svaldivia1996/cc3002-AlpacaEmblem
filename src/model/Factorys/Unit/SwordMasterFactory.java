@@ -13,6 +13,10 @@ import model.units.SwordMaster;
 public class SwordMasterFactory implements IUnitFactory {
     private IUnit swordMaster;
 
+    /**
+     * Creates a new SwordMaster Factory.
+     * @param swordMaster the unit used as mold.
+     */
     public SwordMasterFactory(SwordMaster swordMaster){
         this.swordMaster = swordMaster;
     }

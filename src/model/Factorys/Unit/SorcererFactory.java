@@ -12,6 +12,10 @@ import model.units.Sorcerer;
 public class SorcererFactory implements IUnitFactory {
     private IUnit sorcerer;
 
+    /**
+     * Creates a new Sorcerer Factory.
+     * @param sorcerer the unit used as mold.
+     */
     public SorcererFactory(Sorcerer sorcerer){
         this.sorcerer = sorcerer;
     }

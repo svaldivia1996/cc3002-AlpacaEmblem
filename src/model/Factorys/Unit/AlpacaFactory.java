@@ -12,6 +12,10 @@ import model.units.IUnit;
 public class AlpacaFactory implements IUnitFactory {
     private IUnit alpaca;
 
+    /**
+     * Creates a new Alpaca Factory.
+     * @param alpaca the unit used as mold.
+     */
     public AlpacaFactory(Alpaca alpaca){
         this.alpaca = alpaca;
     }

@@ -12,6 +12,10 @@ import model.items.Light;
 public class LightFactory implements IEquipableItemFactory{
     private IEquipableItem light;
 
+    /**
+     * creates a new Light Factory.
+     * @param light the spell used as mold.
+     */
     public LightFactory(Light light){
         this.light = light;
     }

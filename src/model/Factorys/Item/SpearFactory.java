@@ -13,6 +13,10 @@ import model.units.IUnit;
 public class SpearFactory implements IEquipableItemFactory {
     private IEquipableItem spear;
 
+    /**
+     * creates a new Spear Factory.
+     * @param spear the item used as mold.
+     */
     public SpearFactory(Spear spear){
         this.spear = spear;
     }

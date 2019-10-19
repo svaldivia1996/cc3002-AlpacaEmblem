@@ -12,6 +12,10 @@ import model.units.IUnit;
 public class ClericFactory implements IUnitFactory {
     private IUnit cleric;
 
+    /**
+     * Creates a new Cleric Factory.
+     * @param cleric the unit used as mold.
+     */
     public ClericFactory(Cleric cleric){
         this.cleric = cleric;
     }

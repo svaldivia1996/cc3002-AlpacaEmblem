@@ -13,6 +13,10 @@ import model.items.IEquipableItem;
 public class DarkFactory implements IEquipableItemFactory {
     private IEquipableItem dark;
 
+    /**
+     * creates a new Dark Factory.
+     * @param dark the item used as mold.
+     */
     public DarkFactory(Dark dark){
         this.dark = dark;
     }

@@ -12,6 +12,10 @@ import model.units.IUnit;
 public class ArcherFactory implements IUnitFactory {
     private IUnit archer;
 
+    /**
+     * Creates a new Archer Factory.
+     * @param archer the unit used as mold.
+     */
     public ArcherFactory(Archer archer){
         this.archer = archer;
     }

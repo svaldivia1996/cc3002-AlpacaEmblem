@@ -13,6 +13,10 @@ import model.items.IEquipableItem;
 public class AxeFactory implements IEquipableItemFactory{
     private IEquipableItem axe;
 
+    /**
+     * creates a new Axe Factory.
+     * @param axe the item used as mold.
+     */
     public AxeFactory(Axe axe){
         this.axe = axe;
     }
