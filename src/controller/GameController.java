@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Tactician;
 import model.items.IEquipableItem;
@@ -10,11 +11,16 @@ import model.units.IUnit;
  * Controller of the game.
  * The controller manages all the input received from de game's GUI.
  *
+ * @author Sebastian Valdivia Reyes
  * @author Ignacio Slater Muñoz
  * @version 2.0
  * @since 2.0
  */
 public class GameController {
+    private List<Tactician> tacticians = new ArrayList<>();
+    private Field map;
+    private Tactician  actualTactitian;
+
 
     /**
      * Creates the controller for a new game.
@@ -25,6 +31,7 @@ public class GameController {
      *     the dimensions of the map, for simplicity, all maps are squares
      */
     public GameController(int numberOfPlayers, int mapSize) {
+
 
     }
 
