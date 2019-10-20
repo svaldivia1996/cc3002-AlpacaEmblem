@@ -19,7 +19,9 @@ import model.units.IUnit;
 public class GameController {
     private List<Tactician> tacticians = new ArrayList<>();
     private Field map;
-    private Tactician  actualTactitian;
+    private Tactician  turnOwner;
+    private IUnit selectedUnit;
+    private IEquipableItem selectedItem;
 
 
     /**
@@ -39,21 +41,21 @@ public class GameController {
      * @return the list of all the tacticians participating in the game.
      */
     public List<Tactician> getTacticians() {
-        return null;
+        return tacticians;
     }
 
     /**
      * @return the map of the current game
      */
     public Field getGameMap() {
-        return null;
+        return map;
     }
 
     /**
      * @return the tactician that's currently playing
      */
     public Tactician getTurnOwner() {
-        return null;
+        return turnOwner;
     }
 
     /**
@@ -84,7 +86,7 @@ public class GameController {
      *     the player to be removed
      */
     public void removeTactician(String tactician) {
-
+        tacticians.remove(tactician);
     }
 
     /**
@@ -114,7 +116,7 @@ public class GameController {
      * @return the current player's selected unit
      */
     public IUnit getSelectedUnit() {
-        return null;
+        return getTurnOwner().getSelectedUnit();
     }
 
     /**
@@ -126,14 +128,14 @@ public class GameController {
      *     vertical position of the unit
      */
     public void selectUnitIn(int x, int y) {
-
+        selectedUnit = map.getCell(x,y).getUnit();
     }
 
     /**
      * @return the inventory of the currently selected unit.
      */
     public List<IEquipableItem> getItems() {
-        return null;
+        return turnOwner.getSelectedUnit().getItems();
     }
 
     /**
@@ -143,7 +145,7 @@ public class GameController {
      *     the location of the item in the inventory.
      */
     public void equipItem(int index) {
-
+        selectedUnit.equipItem(selectedUnit.getItems().remove(index));
     }
 
     /**
@@ -155,7 +157,7 @@ public class GameController {
      *     vertical position of the target
      */
     public void useItemOn(int x, int y) {
-
+        selectedUnit.attack(map.getCell(x,y).getUnit());
     }
 
     /**
@@ -165,7 +167,7 @@ public class GameController {
      *     the location of the item in the inventory.
      */
     public void selectItem(int index) {
-
+        selectedItem = selectedUnit.getItems().get(index);
     }
 
     /**
@@ -177,6 +179,6 @@ public class GameController {
      *     vertical position of the target
      */
     public void giveItemTo(int x, int y) {
-
+        selectedUnit.tradeItem(selectedItem,map.getCell(x,y).getUnit(),null);
     }
 }
