@@ -20,7 +20,12 @@ public interface IUnit {
     /**
      * @return true if the unit has moved in the currently turn, false otherwise
      */
-    boolean hasMoved();
+    boolean getHasMoved();
+
+    /**
+     * Set the hasMoved state of the unit
+     */
+    void setHasMoved(boolean hasMoved);
 
     /**
      * The current state of the unit, dead or alive.
@@ -75,7 +80,7 @@ public interface IUnit {
      * Trade an item to anotherItem
      * @param item the item  in the items list
      * @param other the other unit in the trade
-     * @param otherItem the item tn the other unit items list
+     * @param otherItem the item in the other unit items list
      */
     void tradeItem(IEquipableItem item,IUnit other, IEquipableItem otherItem);
 

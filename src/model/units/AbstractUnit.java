@@ -60,8 +60,13 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   @Override
-  public  boolean hasMoved(){
+  public  boolean getHasMoved(){
       return hasMoved;
+  }
+
+  @Override
+  public void setHasMoved(boolean hasMoved){
+      this.hasMoved = hasMoved;
   }
 
   @Override
