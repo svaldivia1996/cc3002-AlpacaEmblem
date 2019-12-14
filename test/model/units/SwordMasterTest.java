@@ -76,7 +76,7 @@ public class SwordMasterTest extends AbstractTestUnit {
     getTargetSorcerer().addItem(anima);
     getTargetSorcerer().equipItem(anima);
     swordMaster.attack(getTargetSorcerer()); //sword vs anima
-    assertEquals(-5,swordMaster.getCurrentHitPoints());
+    assertEquals(0,swordMaster.getCurrentHitPoints());
     assertEquals(5,getTargetSorcerer().getCurrentHitPoints());
   }
 }

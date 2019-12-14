@@ -119,7 +119,7 @@ public class SorcererTest extends AbstractTestUnit{
         sorcerer.addItem(light);
         sorcerer.equipItem(light);
         sorcerer.attack(getTargetFighter());//light vs axe
-        assertEquals(-5,sorcerer.getCurrentHitPoints());
+        assertEquals(0,sorcerer.getCurrentHitPoints());
         assertEquals(20,targetFighter.getCurrentHitPoints());
     }
 

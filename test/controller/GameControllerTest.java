@@ -37,7 +37,7 @@ class GameControllerTest {
     List<Tactician> tacticians = controller.getTacticians();
     assertEquals(4, tacticians.size());
     for (int i = 0; i < tacticians.size(); i++) {
-      assertEquals("Player " + i, tacticians.get(i + 1).getName());
+      assertEquals("Player " + i, tacticians.get(i).getName());
     }
   }
 
@@ -89,7 +89,8 @@ class GameControllerTest {
   void endTurn() {
     Tactician firstPlayer = controller.getTurnOwner();
     // Nuevamente, para determinar el orden de los jugadores se debe usar una semilla
-    Tactician secondPlayer = new Tactician(); // <- Deben cambiar esto (!)
+    Tactician secondPlayer = controller.getTacticians().get(1);
+    //Tactician secondPlayer = new Tactician(); // <- Deben cambiar esto (!)
     assertNotEquals(secondPlayer.getName(), firstPlayer.getName());
 
     controller.endTurn();

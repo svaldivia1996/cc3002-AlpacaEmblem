@@ -86,7 +86,7 @@ public class FighterTest extends AbstractTestUnit {
     getTargetSorcerer().addItem(dark);
     getTargetSorcerer().equipItem(dark);
     fighter.attack(getTargetSorcerer());//Axe vs Dark
-    assertEquals(-5, fighter.getCurrentHitPoints());//Caso Borde
+    assertEquals(0, fighter.getCurrentHitPoints());//Caso Borde
     assertEquals(20, getTargetSorcerer().getCurrentHitPoints());
   }
 }
