@@ -39,6 +39,16 @@ class FieldTest {
     }
   }
 
+  @Test
+  public void equalMaps(){
+    Field map2 = new Field();
+    map2.addCells(true, new Location(0, 0), new Location(0, 1), new Location(0, 2),
+            new Location(1, 0), new Location(1, 1), new Location(1, 2), new Location(2, 0),
+            new Location(2, 1), new Location(2, 2));
+
+    assertEquals(map, map2);
+  }
+
   /**
    * Checks for the connections of a cell
    *

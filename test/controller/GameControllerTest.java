@@ -47,6 +47,13 @@ class GameControllerTest {
     assertEquals(128, gameMap.getSize()); // getSize deben definirlo
     assertTrue(controller.getGameMap().isConnected());
     Random testRandom = new Random(randomSeed);
+    gameMap.setRandom(testRandom);
+    Field anotherMap = new Field();
+    anotherMap.setRandom(testRandom);
+    anotherMap.newRandomMap(128);
+    gameMap.newRandomMap(128);
+    assertEquals(gameMap,anotherMap);
+    //controller.getGameMap().ge
     // Para testear funcionalidades que dependen de valores aleatorios se hacen 2 cosas:
     //  - Comprobar las invariantes de las estructuras que se crean (en este caso que el mapa tenga
     //    las dimensiones definidas y que sea conexo.

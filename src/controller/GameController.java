@@ -47,13 +47,23 @@ public class GameController {
             allTacticians.add(new Tactician("Player "+i, map));
             tacticians.add(new Tactician("Player "+i, map));
         }
+        //Collections.shuffle(tacticians);
+        turnOwner = tacticians.get(0);
+        rounds=1;
 
     }
 
     /**
-     * @return the list of all the tacticians participating in the game.
+     * @return the list of all the tacticians currently participating in the game.
      */
     public List<Tactician> getTacticians() {
+        return tacticians;
+    }
+
+    /**
+     * @return the list of all the tacticians that participated in the game
+     */
+    public List<Tactician> getAllTacticians(){
         return allTacticians;
     }
 
@@ -105,9 +115,11 @@ public class GameController {
                 }
                 turnOwner = tacticians.get(0);
                 rounds++;
+                break;
             }
             else if(turnOwner == tacticians.get(i)){
                 turnOwner = tacticians.get(i+1);
+                break;
             }
         }
     }
@@ -119,7 +131,12 @@ public class GameController {
      *     the player to be removed
      */
     public void removeTactician(String tactician) {
-        tacticians.remove(tactician);
+        for(Tactician tact: tacticians){
+            if (tact.getName().equals(tactician)){
+                tacticians.remove(tact);
+                break;
+            }
+        }
     }
 
     /**
@@ -129,6 +146,8 @@ public class GameController {
      */
     public void initGame(final int maxTurns) {
         maxRounds = maxTurns;
+        Collections.shuffle(tacticians);
+
     }
 
     /**
@@ -136,6 +155,8 @@ public class GameController {
      */
     public void initEndlessGame() {
         maxRounds = -1;
+        Collections.shuffle(tacticians);
+
     }
 
     /**

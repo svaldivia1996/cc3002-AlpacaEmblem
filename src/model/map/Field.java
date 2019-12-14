@@ -144,11 +144,23 @@ public class Field {
     return cell1.isNeighbour(cell2);
   }
 
+    /**
+     *
+     * @return the random variable of the field
+     */
+  public Random getRandom(){
+      return random;
+  }
+
+  public void setRandom(Random seed){
+      random = seed;
+  }
+
   /**
    * @return the size of the map
    */
   public int getSize(){
-    return map.size();
+     return (int) Math.sqrt(map.size());
   }
 
   /**
@@ -161,5 +173,10 @@ public class Field {
         this.addCells(false, new Location(i,j));
       }
     }
+  }
+
+  @Override
+  public boolean equals(Object other){
+      return other instanceof Field && this.map.equals(((Field) other).map);
   }
 }
