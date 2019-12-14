@@ -28,6 +28,7 @@ public abstract class AbstractUnit implements IUnit {
     private Location location;
     protected final List<IEquipableItem> items = new ArrayList<>();
     protected IEquipableItem equippedItem;
+    private boolean hasMoved;
 
 
 
@@ -45,6 +46,7 @@ public abstract class AbstractUnit implements IUnit {
    *     maximum amount of items this unit can carry
    * @param items
    *     the items carried by this unit
+   *
    */
   protected AbstractUnit(final int hitPoints, final int movement,
       final Location location, final int maxItems, final IEquipableItem... items) {
@@ -53,6 +55,13 @@ public abstract class AbstractUnit implements IUnit {
     this.movement = movement;
     this.location = location;
     this.items.addAll(Arrays.asList(items).subList(0, min(maxItems, items.length)));
+    this.hasMoved = false;
+
+  }
+
+  @Override
+  public  boolean hasMoved(){
+      return hasMoved;
   }
 
   @Override

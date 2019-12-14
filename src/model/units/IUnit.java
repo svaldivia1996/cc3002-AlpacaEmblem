@@ -18,6 +18,11 @@ import model.map.Location;
 public interface IUnit {
 
     /**
+     * @return true if the unit has moved in the currently turn, false otherwise
+     */
+    boolean hasMoved();
+
+    /**
      * The current state of the unit, dead or alive.
      * @return True if the unit is dead, false otherwise.
      */

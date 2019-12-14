@@ -17,11 +17,13 @@ import model.units.IUnit;
  * @since 2.0
  */
 public class GameController {
-    private List<Tactician> tacticians = new ArrayList<>();
+    private List<Tactician> allTacticians = new ArrayList<>();
+    private List<Tactician> tacticians= new ArrayList<>();
     private Field map;
     private Tactician  turnOwner;
     private IUnit selectedUnit;
     private IEquipableItem selectedItem;
+    private int rounds, maxRounds;
 
 
     /**
@@ -41,7 +43,7 @@ public class GameController {
      * @return the list of all the tacticians participating in the game.
      */
     public List<Tactician> getTacticians() {
-        return tacticians;
+        return allTacticians;
     }
 
     /**
@@ -62,14 +64,14 @@ public class GameController {
      * @return the number of rounds since the start of the game.
      */
     public int getRoundNumber() {
-        return 0;
+        return rounds;
     }
 
     /**
      * @return the maximum number of rounds a match can last
      */
     public int getMaxRounds() {
-        return 0;
+        return maxRounds;
     }
 
     /**
@@ -102,7 +104,7 @@ public class GameController {
      * Starts a game without a limit of turns.
      */
     public void initEndlessGame() {
-
+        maxRounds = -1;
     }
 
     /**

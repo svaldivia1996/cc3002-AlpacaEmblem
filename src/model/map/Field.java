@@ -138,6 +138,7 @@ public class Field {
 
   /**
    * Checks if two cells of the map are connected
+   * @return if two cells are connected
    */
   public boolean checkConnection(final Location cell1, final Location cell2) {
     return cell1.isNeighbour(cell2);
