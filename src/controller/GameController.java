@@ -1,7 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import model.Factorys.Item.IEquipableItemFactory;
+import model.Factorys.Unit.IUnitFactory;
 import model.Tactician;
 import model.items.IEquipableItem;
 import model.map.Field;
@@ -24,6 +28,8 @@ public class GameController {
     private IUnit selectedUnit;
     private IEquipableItem selectedItem;
     private int rounds, maxRounds;
+    private IEquipableItemFactory itemFactory;
+    private IUnitFactory unitFactory;
 
 
     /**
@@ -35,7 +41,12 @@ public class GameController {
      *     the dimensions of the map, for simplicity, all maps are squares
      */
     public GameController(int numberOfPlayers, int mapSize) {
-
+        map = new Field();
+        map.newRandomMap(mapSize);
+        for(int i = 0; i < numberOfPlayers; i++){
+            allTacticians.add(new Tactician("Player "+i, map));
+            tacticians.add(new Tactician("Player "+i, map));
+        }
 
     }
 
@@ -79,6 +90,26 @@ public class GameController {
      */
     public void endTurn() {
 
+        //ending the turn allows to move the units again in the next turn
+        for(IUnit unit : turnOwner.getUnits()){
+            unit.setHasMoved(false);
+        }
+
+
+        for(int i = 0; i < tacticians.size(); i++ ){
+            //if the turn owner is the last one to play in the round, it cannot be the first to play in the next round
+            if(turnOwner == tacticians.get(i) && i == tacticians.size()-1){
+                Collections.shuffle(tacticians);
+                while(turnOwner == tacticians.get(0)){
+                    Collections.shuffle(tacticians);
+                }
+                turnOwner = tacticians.get(0);
+                rounds++;
+            }
+            else if(turnOwner == tacticians.get(i)){
+                turnOwner = tacticians.get(i+1);
+            }
+        }
     }
 
     /**
@@ -97,7 +128,7 @@ public class GameController {
      *  the maximum number of turns the game can last
      */
     public void initGame(final int maxTurns) {
-
+        maxRounds = maxTurns;
     }
 
     /**
@@ -111,7 +142,11 @@ public class GameController {
      * @return the winner of this game, if the match ends in a draw returns a list of all the winners
      */
     public List<String> getWinners() {
-        return null;
+        List<String> winners = new ArrayList<>();
+        for (Tactician tactician: tacticians) {
+            winners.add(tactician.getName());
+        }
+        return winners;
     }
 
     /**

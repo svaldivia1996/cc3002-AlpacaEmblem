@@ -145,10 +145,21 @@ public class Field {
   }
 
   /**
-   *
    * @return the size of the map
    */
   public int getSize(){
     return map.size();
+  }
+
+  /**
+   * Creates a new random map with connected locations
+   * @param mapSize the long and wide of the map,
+   */
+  public void newRandomMap(int mapSize) {
+    for(int i = 0; i < mapSize; i++){
+      for(int j = 0; j < mapSize; j++){
+        this.addCells(false, new Location(i,j));
+      }
+    }
   }
 }
