@@ -2,6 +2,7 @@ package model.units;
 
 import java.util.List;
 
+import model.Tactician;
 import model.items.*;
 import model.map.Location;
 
@@ -16,6 +17,22 @@ import model.map.Location;
  * @since 1.0
  */
 public interface IUnit {
+
+    /**
+     * @return true if is a hero or false otherwise
+     */
+    boolean isHero();
+
+    /**
+     * @return the tactician that owns the unit
+     */
+    Tactician getTactician();
+
+    /**
+     * Sets a new tactician to own this unit
+     * @param tactician the tactician to own the unit
+     */
+    void setTactician(Tactician tactician);
 
     /**
      * @return true if the unit has moved in the currently turn, false otherwise

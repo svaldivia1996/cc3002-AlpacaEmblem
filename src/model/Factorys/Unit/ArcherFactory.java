@@ -22,6 +22,6 @@ public class ArcherFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new Archer(archer.getMaxHitPoints(), archer.getMovement(), archer.getLocation(),null);
+        return new Archer(archer.getMaxHitPoints(), archer.getMovement(), archer.getLocation());
     }
 }

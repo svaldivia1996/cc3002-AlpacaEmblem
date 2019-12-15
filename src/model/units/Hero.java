@@ -30,6 +30,11 @@ public class Hero extends AbstractUnit {
     super(hitPoints, movement, location, 3, items);
   }
 
+  @Override
+  public boolean isHero(){
+    return true;
+  }
+
   /**
    * Sets the currently equipped item of this unit.
    *

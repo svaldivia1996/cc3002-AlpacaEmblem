@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.AxeFactory;
+import model.Factorys.Item.IEquipableItemFactory;
 import model.map.Location;
 import model.units.Fighter;
 import model.units.IUnit;
@@ -13,6 +15,7 @@ import model.units.IUnit;
 class AxeTest extends AbstractTestItem {
 
   private Axe axe;
+  private AxeFactory axeFactory;
   private Axe wrongAxe;
   private Fighter fighter;
 
@@ -23,6 +26,7 @@ class AxeTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 2;
     axe = new Axe(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    axeFactory = new AxeFactory(axe);
   }
 
   /**
@@ -49,6 +53,11 @@ class AxeTest extends AbstractTestItem {
   @Override
   public IEquipableItem getTestItem() {
     return axe;
+  }
+
+  @Override
+  public IEquipableItemFactory getTestFactory(){
+    return axeFactory;
   }
 
   /**

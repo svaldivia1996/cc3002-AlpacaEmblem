@@ -23,6 +23,6 @@ public class SwordMasterFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new SwordMaster(swordMaster.getMaxHitPoints(), swordMaster.getMovement(), swordMaster.getLocation(),null);
+        return new SwordMaster(swordMaster.getMaxHitPoints(), swordMaster.getMovement(), swordMaster.getLocation());
     }
 }

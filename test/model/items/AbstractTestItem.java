@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import model.Factorys.Item.*;
+import model.Factorys.Unit.*;
 import model.units.Alpaca;
 import model.units.IUnit;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +33,7 @@ public abstract class AbstractTestItem {
     setWrongRangeItem();
     setTestUnit();
   }
+
 
   /**
    * Sets up a correctly implemented item that's going to be tested
@@ -68,6 +71,7 @@ public abstract class AbstractTestItem {
     assertEquals(getExpectedBasePower(), getTestItem().getPower());
     assertEquals(getExpectedMinRange(), getTestItem().getMinRange());
     assertEquals(getExpectedMaxRange(), getTestItem().getMaxRange());
+    assertEquals(getTestItem(),getTestFactory().createItem());
   }
 
   /**
@@ -81,6 +85,11 @@ public abstract class AbstractTestItem {
    * @return the item being tested
    */
   public abstract IEquipableItem getTestItem();
+
+  /**
+   * @return the factory being tested
+   */
+  public abstract IEquipableItemFactory getTestFactory();
 
   /**
    * @return the expected power of the Item

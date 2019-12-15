@@ -1,15 +1,21 @@
 package controller;
 
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
+import handlers.LoseHandler;
 import model.Factorys.Item.IEquipableItemFactory;
-import model.Factorys.Unit.IUnitFactory;
+import model.Factorys.Unit.*;
 import model.Tactician;
 import model.items.IEquipableItem;
 import model.map.Field;
+import model.map.Location;
+import model.units.Fighter;
 import model.units.IUnit;
+import model.units.Sorcerer;
 
 /**
  * Controller of the game.
@@ -28,8 +34,16 @@ public class GameController {
     private IUnit selectedUnit;
     private IEquipableItem selectedItem;
     private int rounds, maxRounds;
+    private Random random = new Random();
     private IEquipableItemFactory itemFactory;
-    private IUnitFactory unitFactory;
+    private AlpacaFactory alpacaFactory;
+    private ArcherFactory archerFactory;
+    private ClericFactory clericFactory;
+    private FighterFactory fighterFactory;
+    private HeroFactory heroFactory;
+    private SorcererFactory sorcererFactory;
+    private SwordMasterFactory swordMasterFactory;
+    private PropertyChangeSupport loseNotification = new PropertyChangeSupport(this);
 
 
     /**
@@ -43,11 +57,16 @@ public class GameController {
     public GameController(int numberOfPlayers, int mapSize) {
         map = new Field();
         map.newRandomMap(mapSize);
+        LoseHandler loseHandler = new LoseHandler(this);
+        //loseNotification.addPropertyChangeListener(loseHandler);
         for(int i = 0; i < numberOfPlayers; i++){
             allTacticians.add(new Tactician("Player "+i, map));
             tacticians.add(new Tactician("Player "+i, map));
+            allTacticians.get(i).setGameController(this);
+            tacticians.get(i).setGameController(this);
+            tacticians.get(i).getUnitDeathNotification().addPropertyChangeListener(new LoseHandler(this));
         }
-        //Collections.shuffle(tacticians);
+
         turnOwner = tacticians.get(0);
         rounds=1;
 
@@ -96,6 +115,13 @@ public class GameController {
     }
 
     /**
+     * @return the random seed of the controller for the shuffle
+     */
+    public Random getRandom(){
+        return random;
+    }
+
+    /**
      * Finishes the current player's turn.
      */
     public void endTurn() {
@@ -111,7 +137,7 @@ public class GameController {
             if(turnOwner == tacticians.get(i) && i == tacticians.size()-1){
                 Collections.shuffle(tacticians);
                 while(turnOwner == tacticians.get(0)){
-                    Collections.shuffle(tacticians);
+                    Collections.shuffle(tacticians,random);
                 }
                 turnOwner = tacticians.get(0);
                 rounds++;
@@ -189,6 +215,10 @@ public class GameController {
         selectedUnit = map.getCell(x,y).getUnit();
     }
 
+    public void setSelectedUnit(IUnit unit){
+        selectedUnit = unit;
+    }
+
     /**
      * @return the inventory of the currently selected unit.
      */
@@ -238,5 +268,17 @@ public class GameController {
      */
     public void giveItemTo(int x, int y) {
         selectedUnit.tradeItem(selectedItem,map.getCell(x,y).getUnit(),null);
+    }
+
+    public void moveSelectedUnit(Location targetLocation){
+        selectedUnit.moveTo(targetLocation);
+    }
+
+    /**
+     * Sets a seed for the randomness of the shuffle
+     * @param seed the seed of the randomness
+     */
+    public void setRandom(Random seed){
+        random = seed;
     }
 }

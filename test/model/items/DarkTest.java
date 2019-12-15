@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.DarkFactory;
+import model.Factorys.Item.IEquipableItemFactory;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
@@ -11,6 +13,7 @@ import model.units.Sorcerer;
  */
 public class DarkTest extends AbstractTestItem {
     private Dark dark;
+    private DarkFactory darkFactory;
     private Dark wrongDark;
     private Sorcerer sorcerer;
 
@@ -21,6 +24,7 @@ public class DarkTest extends AbstractTestItem {
         expectedMinRange = 1;
         expectedMaxRange = 3;
         dark = new Dark(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+        darkFactory = new DarkFactory(dark);
     }
 
     /**
@@ -47,6 +51,11 @@ public class DarkTest extends AbstractTestItem {
     @Override
     public IEquipableItem getTestItem() {
         return dark;
+    }
+
+    @Override
+    public IEquipableItemFactory getTestFactory(){
+        return darkFactory;
     }
 
     /**

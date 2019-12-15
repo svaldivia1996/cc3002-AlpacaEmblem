@@ -37,6 +37,11 @@ public abstract class AbstractItem implements IEquipableItem {
   }
 
   @Override
+  public boolean equals(Object obj){
+    return name == ((IEquipableItem)obj).getName() && power ==((IEquipableItem) obj).getPower() && minRange == ((IEquipableItem) obj).getMinRange() && maxRange == ((IEquipableItem) obj).getMaxRange();
+  }
+
+  @Override
   public void equipTo(final IUnit unit) {
     unit.setEquippedItem(this);
     owner = unit;

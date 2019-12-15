@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.AnimaFactory;
+import model.Factorys.Item.IEquipableItemFactory;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
@@ -11,7 +13,9 @@ import model.units.Sorcerer;
  */
 public class AnimaTest extends AbstractTestItem {
 
+
     private Anima anima;
+    private AnimaFactory animaFactory;
     private Anima wrongAnima;
     private Sorcerer sorcerer;
 
@@ -22,6 +26,7 @@ public class AnimaTest extends AbstractTestItem {
         expectedMinRange = 1;
         expectedMaxRange = 3;
         anima = new Anima(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+        animaFactory = new AnimaFactory((anima));
     }
 
     /**
@@ -48,6 +53,11 @@ public class AnimaTest extends AbstractTestItem {
     @Override
     public IEquipableItem getTestItem() {
         return anima;
+    }
+
+    @Override
+    public IEquipableItemFactory getTestFactory(){
+        return  animaFactory;
     }
 
     /**

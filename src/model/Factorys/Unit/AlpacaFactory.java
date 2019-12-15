@@ -23,6 +23,6 @@ public class AlpacaFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new Alpaca(alpaca.getMaxHitPoints(),alpaca.getMovement(),alpaca.getLocation(),null);
+        return new Alpaca(alpaca.getMaxHitPoints(),alpaca.getMovement(),alpaca.getLocation());
     }
 }

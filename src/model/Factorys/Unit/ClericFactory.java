@@ -23,6 +23,6 @@ public class ClericFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new Cleric(cleric.getMaxHitPoints(), cleric.getMovement(), cleric.getLocation(),null);
+        return new Cleric(cleric.getMaxHitPoints(), cleric.getMovement(), cleric.getLocation());
     }
 }

@@ -3,6 +3,8 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.Factorys.Unit.ClericFactory;
+import model.Factorys.Unit.IUnitFactory;
 import model.items.Staff;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,7 @@ import org.junit.jupiter.api.Test;
 public class ClericTest extends AbstractTestUnit {
 
   private Cleric cleric;
+  private ClericFactory clericFactory;
 
   /**
    * Set up the main unit that's going to be tested in the test set
@@ -20,6 +23,7 @@ public class ClericTest extends AbstractTestUnit {
   @Override
   public void setTestUnit() {
     cleric = new Cleric(50, 2, field.getCell(0, 0));
+    clericFactory =new ClericFactory(cleric);
   }
 
   /**
@@ -28,6 +32,11 @@ public class ClericTest extends AbstractTestUnit {
   @Override
   public IUnit getTestUnit() {
     return cleric;
+  }
+
+  @Override
+  public IUnitFactory getTestFactory(){
+    return clericFactory;
   }
 
   @Test

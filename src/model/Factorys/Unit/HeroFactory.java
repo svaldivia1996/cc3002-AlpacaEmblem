@@ -22,6 +22,6 @@ public class HeroFactory implements IUnitFactory{
 
     @Override
     public IUnit createUnit() {
-        return new Hero(hero.getMaxHitPoints(), hero.getMovement(), hero.getLocation(), null);
+        return new Hero(hero.getMaxHitPoints(), hero.getMovement(), hero.getLocation());
     }
 }

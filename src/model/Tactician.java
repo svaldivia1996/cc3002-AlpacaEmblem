@@ -1,10 +1,13 @@
 package model;
 
+import controller.GameController;
 import model.items.IEquipableItem;
 import model.map.Field;
 import model.map.Location;
 import model.units.IUnit;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +29,8 @@ public class Tactician {
     private Field map;
     private List<IUnit> units = new ArrayList<>();
     private IUnit selectedUnit;
+    private GameController gameController;
+    private PropertyChangeSupport unitDeathNotification = new PropertyChangeSupport(this);
 
     /**
      * Creates a new Tactician
@@ -119,7 +124,36 @@ public class Tactician {
         return  selectedUnit.getEquippedItem().getPower();
     }
 
+    /**
+     * @return the property change support
+     */
+    public PropertyChangeSupport getUnitDeathNotification() {
+        return unitDeathNotification;
+    }
+
     //Actions
+
+    /**
+     * Sets a Game Controller for the tactician
+     * @param gc the game controller
+     */
+    public void setGameController(GameController gc){
+        gameController = gc;
+    }
+
+    /**
+     * Select a unit from the list of units
+     * @param index the index of the unit in the list
+     */
+    public void selectUnit(int index){
+        selectedUnit = units.get(index);
+        gameController.setSelectedUnit(selectedUnit);
+    }
+
+    public void addUnit(IUnit unit){
+        units.add(unit);
+        unit.setTactician(this);
+    }
 
     /**
      * Equips an item from the inventory of the selected unit
@@ -169,11 +203,39 @@ public class Tactician {
     }
 
     /**
+     * Checks if the tactitian lost
+     * @return true if all units are dead o has a dead Hero, false otherwise
+     */
+    public boolean loseCondition(){
+        int countDeathUnits = 0;
+        for (IUnit unit: units ){
+            if(unit.isHero() && unit.isDead()){
+                return true;
+            }
+
+            if(unit.isDead()){
+                countDeathUnits++;
+            }
+        }
+        return countDeathUnits == units.size();
+    }
+
+    /**
      * The actual unit attack the target unit, if the target is out of attack range nothing happens.
      * @param target unit to be attacked
      */
     public void selectedUnitAttack(IUnit target){
+        IUnit oldAttacker = this.selectedUnit;
+        IUnit oldTarget = target;
         selectedUnit.attack(target);
+        //Tactician oldAttackerTactician = this;
+        //Tactician oldTargetTactician = target.getTactician();
+        if (target.getTactician().loseCondition()){
+            unitDeathNotification.firePropertyChange(new PropertyChangeEvent(this, target.getTactician().name+" is defeated", oldTarget, target));
+        }
+        if (this.loseCondition()){
+            unitDeathNotification.firePropertyChange(new PropertyChangeEvent(this, this.name+" is defeated", oldAttacker, this.selectedUnit));
+        }
     }
 
     /**

@@ -10,11 +10,17 @@ import java.util.Random;
 import java.util.stream.IntStream;
 import model.Tactician;
 import model.map.Field;
+import model.map.Location;
+import model.units.Fighter;
+import model.units.Hero;
+import model.units.IUnit;
+import model.units.SwordMaster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
+ * @author Sebastian Valdivia Reyes
  * @author Ignacio Slater Muñoz
  * @since v2.0
  */
@@ -23,6 +29,8 @@ class GameControllerTest {
   private GameController controller;
   private long randomSeed;
   private List<String> testTacticians;
+  private Field field;
+  private IUnit fighter,hero, swordMaster;
 
   @BeforeEach
   void setUp() {
@@ -30,7 +38,24 @@ class GameControllerTest {
     randomSeed = new Random().nextLong();
     controller = new GameController(4, 128);
     testTacticians = List.of("Player 0", "Player 1", "Player 2", "Player 3");
+    setField();
+    setUnits();
   }
+
+  // crea un mapa 3x3 completo
+  public void setField() {
+      this.field = new Field();
+      this.field.addCells(true, new Location(0, 0), new Location(0, 1), new Location(0, 2),
+              new Location(1, 0), new Location(1, 1), new Location(1, 2),
+              new Location(2, 0), new Location(2, 1), new Location(2, 2));
+    }
+
+    public void setUnits(){
+      fighter = new Fighter(50, 2, field.getCell(0, 0));
+      hero = new Hero(50, 2, field.getCell(0, 1));
+      swordMaster = new SwordMaster(50, 2, field.getCell(1, 0));
+    }
+
 
   @Test
   void getTacticians() {
@@ -67,7 +92,16 @@ class GameControllerTest {
 
   @Test
   void getTurnOwner() {
-    //  En este caso deben hacer lo mismo que para el mapa
+    assertEquals(4,controller.getTacticians().size());
+    Random testRandom = new Random(randomSeed);
+    GameController otherController = new GameController(4,128);
+    controller.setRandom(testRandom);
+    otherController.setRandom(testRandom);
+    while(controller.getRoundNumber() == 2){
+        controller.endTurn();
+        otherController.endTurn();
+    }
+    assertEquals(controller.getTurnOwner().getName(),otherController.getTurnOwner().getName());
   }
 
   @Test
@@ -152,10 +186,20 @@ class GameControllerTest {
   // Desde aquí en adelante, los tests deben definirlos completamente ustedes
   @Test
   void getSelectedUnit() {
+    controller.getTacticians().get(0).addUnit(hero);
+    controller.getTacticians().get(0).selectUnit(0);
+    assertEquals(hero,controller.getSelectedUnit());
   }
 
   @Test
   void selectUnitIn() {
+    controller.getTacticians().get(0).addUnit(hero);
+    controller.getTacticians().get(0).selectUnit(0);
+    assertEquals(hero,controller.getSelectedUnit());
+    controller.moveSelectedUnit(field.getCell(0,2));
+    assertEquals(hero,field.getCell(0,2).getUnit());
+    controller.selectUnitIn(0,2);
+    assertEquals(hero,controller.getSelectedUnit());
   }
 
   @Test

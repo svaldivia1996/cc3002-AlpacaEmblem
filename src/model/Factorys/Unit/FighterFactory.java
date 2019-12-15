@@ -22,6 +22,6 @@ public class FighterFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new Fighter(fighter.getMaxHitPoints(), fighter.getMovement(), fighter.getLocation(),null);
+        return new Fighter(fighter.getMaxHitPoints(), fighter.getMovement(), fighter.getLocation());
     }
 }

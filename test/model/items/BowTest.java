@@ -2,6 +2,8 @@ package model.items;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import model.Factorys.Item.BowFactory;
+import model.Factorys.Item.IEquipableItemFactory;
 import model.map.Location;
 import model.units.Archer;
 import model.units.IUnit;
@@ -16,6 +18,7 @@ import org.junit.jupiter.api.Test;
 public class BowTest extends AbstractTestItem {
 
   private Bow bow;
+  private BowFactory bowFactory;
   private Bow wrongBow;
   private Archer archer;
 
@@ -29,6 +32,7 @@ public class BowTest extends AbstractTestItem {
     expectedMinRange = 2;
     expectedMaxRange = 4;
     bow = new Bow(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    bowFactory = new BowFactory(bow);
   }
 
   /**
@@ -68,6 +72,11 @@ public class BowTest extends AbstractTestItem {
   @Override
   public IEquipableItem getTestItem() {
     return bow;
+  }
+
+  @Override
+  public IEquipableItemFactory getTestFactory(){
+    return bowFactory;
   }
 
   /**

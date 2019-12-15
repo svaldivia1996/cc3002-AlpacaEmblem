@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.IEquipableItemFactory;
+import model.Factorys.Item.SpearFactory;
 import model.map.Location;
 import model.units.Hero;
 import model.units.IUnit;
@@ -13,6 +15,7 @@ import model.units.IUnit;
 public class SpearTest extends AbstractTestItem {
 
   private Spear javelin;
+  private SpearFactory spearFactory;
   private Spear wrongSpear;
   private Hero hero;
 
@@ -26,6 +29,7 @@ public class SpearTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 3;
     javelin = new Spear(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    spearFactory = new SpearFactory(javelin);
   }
 
   /**
@@ -55,6 +59,11 @@ public class SpearTest extends AbstractTestItem {
   @Override
   public IEquipableItem getTestItem() {
     return javelin;
+  }
+
+  @Override
+  public IEquipableItemFactory getTestFactory(){
+    return spearFactory;
   }
 
   /**

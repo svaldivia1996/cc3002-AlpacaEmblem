@@ -1,5 +1,6 @@
 package model.units;
 
+import model.Factorys.Unit.IUnitFactory;
 import model.items.*;
 import model.map.Field;
 import model.map.Location;
@@ -127,6 +128,7 @@ public abstract class AbstractTestUnit implements ITestUnit {
     assertEquals(2, getTestUnit().getMovement());
     assertEquals(new Location(0, 0), getTestUnit().getLocation());
     assertTrue(getTestUnit().getItems().isEmpty());
+    assertEquals(getTestUnit(),getTestFactory().createUnit());
   }
 
   /**
@@ -134,6 +136,11 @@ public abstract class AbstractTestUnit implements ITestUnit {
    */
   @Override
   public abstract IUnit getTestUnit();
+
+  /**
+   * @return the current factory being tested
+   */
+  public abstract IUnitFactory getTestFactory();
 
   /**
    * Checks if the axe is equipped correctly to the unit

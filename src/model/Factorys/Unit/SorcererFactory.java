@@ -22,6 +22,6 @@ public class SorcererFactory implements IUnitFactory {
 
     @Override
     public IUnit createUnit() {
-        return new Sorcerer(sorcerer.getMaxHitPoints(),sorcerer.getMovement(),sorcerer.getLocation(),null);
+        return new Sorcerer(sorcerer.getMaxHitPoints(),sorcerer.getMovement(),sorcerer.getLocation());
     }
 }

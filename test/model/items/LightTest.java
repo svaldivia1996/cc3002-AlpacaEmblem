@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.IEquipableItemFactory;
+import model.Factorys.Item.LightFactory;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
@@ -11,6 +13,7 @@ import model.units.Sorcerer;
  */
 public class LightTest extends AbstractTestItem {
     private Light light;
+    private LightFactory lightFactory;
     private Light wrongLight;
     private Sorcerer sorcerer;
 
@@ -21,6 +24,7 @@ public class LightTest extends AbstractTestItem {
         expectedMinRange = 1;
         expectedMaxRange = 3;
         light = new Light(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+        lightFactory = new LightFactory(light);
     }
 
     /**
@@ -47,6 +51,11 @@ public class LightTest extends AbstractTestItem {
     @Override
     public IEquipableItem getTestItem() {
         return light;
+    }
+
+    @Override
+    public IEquipableItemFactory getTestFactory(){
+        return lightFactory;
     }
 
     /**

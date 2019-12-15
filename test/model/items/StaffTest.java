@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.IEquipableItemFactory;
+import model.Factorys.Item.StaffFactory;
 import model.map.Location;
 import model.units.Cleric;
 import model.units.IUnit;
@@ -13,6 +15,7 @@ import model.units.IUnit;
 public class StaffTest extends AbstractTestItem {
 
   private Staff staff;
+  private StaffFactory staffFactory;
   private Staff wrongStaff;
   private Cleric cleric;
 
@@ -26,6 +29,7 @@ public class StaffTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 1;
     staff = new Staff(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    staffFactory = new StaffFactory(staff);
   }
 
   /**
@@ -55,6 +59,11 @@ public class StaffTest extends AbstractTestItem {
   @Override
   public IEquipableItem getTestItem() {
     return staff;
+  }
+
+  @Override
+  public IEquipableItemFactory getTestFactory(){
+    return staffFactory;
   }
 
   /**

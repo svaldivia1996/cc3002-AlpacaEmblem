@@ -1,5 +1,7 @@
 package model.items;
 
+import model.Factorys.Item.IEquipableItemFactory;
+import model.Factorys.Item.SwordFactory;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.SwordMaster;
@@ -13,6 +15,7 @@ import model.units.SwordMaster;
 public class SwordTest extends AbstractTestItem {
 
   private Sword sword;
+  private SwordFactory swordFactory;
   private Sword wrongSword;
   private SwordMaster swordMaster;
 
@@ -26,6 +29,7 @@ public class SwordTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 1;
     sword = new Sword(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    swordFactory = new SwordFactory(sword);
   }
 
   /**
@@ -55,6 +59,11 @@ public class SwordTest extends AbstractTestItem {
   @Override
   public IEquipableItem getTestItem() {
     return sword;
+  }
+
+  @Override
+  public IEquipableItemFactory getTestFactory(){
+    return swordFactory;
   }
 
   /**

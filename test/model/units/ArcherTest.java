@@ -3,6 +3,8 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.Factorys.Unit.ArcherFactory;
+import model.Factorys.Unit.IUnitFactory;
 import model.items.Bow;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +18,7 @@ import org.junit.jupiter.api.Test;
 public class ArcherTest extends AbstractTestUnit {
 
   private Archer archer;
+  private ArcherFactory archerFactory;
 
   /**
    * Set up the main unit that's going to be tested in the test set
@@ -23,6 +26,8 @@ public class ArcherTest extends AbstractTestUnit {
   @Override
   public void setTestUnit() {
     archer = new Archer(50, 2, field.getCell(0, 0));
+    archerFactory =new ArcherFactory((archer));
+
   }
 
   /**
@@ -31,6 +36,11 @@ public class ArcherTest extends AbstractTestUnit {
   @Override
   public IUnit getTestUnit() {
     return archer;
+  }
+
+  @Override
+  public IUnitFactory getTestFactory(){
+    return archerFactory;
   }
 
   /**

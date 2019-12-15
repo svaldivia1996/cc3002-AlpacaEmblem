@@ -1,5 +1,7 @@
 package model.units;
 
+import model.Factorys.Unit.AlpacaFactory;
+import model.Factorys.Unit.IUnitFactory;
 import model.items.IEquipableItem;
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +19,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AlpacaTest extends AbstractTestUnit {
 
   private Alpaca alpaca;
+  private AlpacaFactory alpacaFactory;
 
   @Override
   public void setTestUnit() {
     alpaca = new Alpaca(50, 2, field.getCell(0, 0));
+    alpacaFactory = new AlpacaFactory((alpaca));
   }
 
   @Override
   public Alpaca getTestUnit() {
     return alpaca;
+  }
+
+  @Override
+  public IUnitFactory getTestFactory(){
+    return alpacaFactory;
   }
 
   /**

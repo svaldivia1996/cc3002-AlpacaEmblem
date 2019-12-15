@@ -2,10 +2,12 @@ package model.units;
 
 import static java.lang.Math.min;
 
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import model.Tactician;
 import model.items.*;
 import model.map.Location;
 
@@ -22,6 +24,7 @@ import model.map.Location;
  */
 public abstract class AbstractUnit implements IUnit {
 
+    private Tactician tactician;
     private final int maxHitPoints;
     private int currentHitPoints;
     private int movement;
@@ -29,6 +32,7 @@ public abstract class AbstractUnit implements IUnit {
     protected final List<IEquipableItem> items = new ArrayList<>();
     protected IEquipableItem equippedItem;
     private boolean hasMoved;
+
 
 
 
@@ -57,6 +61,26 @@ public abstract class AbstractUnit implements IUnit {
     this.items.addAll(Arrays.asList(items).subList(0, min(maxItems, items.length)));
     this.hasMoved = false;
 
+  }
+
+  @Override
+  public boolean equals(Object obj){
+      return maxHitPoints == ((IUnit)obj).getMaxHitPoints() && movement == ((IUnit) obj).getMovement();
+  }
+
+  @Override
+  public boolean isHero(){
+      return false;
+  }
+
+  @Override
+  public Tactician getTactician(){
+      return this.tactician;
+  }
+
+  @Override
+  public void setTactician(Tactician tactician){
+      this.tactician = tactician;
   }
 
   @Override
@@ -152,9 +176,9 @@ public abstract class AbstractUnit implements IUnit {
 
   @Override
   public void moveTo(final Location targetLocation) {
-    if (getLocation().distanceTo(targetLocation) <= getMovement()
-        && targetLocation.getUnit() == null) {
+    if (getLocation().distanceTo(targetLocation) <= getMovement() && targetLocation.getUnit() == null) {
       setLocation(targetLocation);
+      targetLocation.setUnit(this);
     }
   }
 

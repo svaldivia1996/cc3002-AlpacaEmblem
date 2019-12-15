@@ -1,5 +1,8 @@
 package model.units;
 
+import model.Factorys.Item.SwordFactory;
+import model.Factorys.Unit.IUnitFactory;
+import model.Factorys.Unit.SwordMasterFactory;
 import model.items.Sword;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class SwordMasterTest extends AbstractTestUnit {
 
   private SwordMaster swordMaster;
+  private SwordMasterFactory swordMasterFactory;
 
   /**
    * Set up the main unit that's going to be tested in the test set
@@ -19,6 +23,7 @@ public class SwordMasterTest extends AbstractTestUnit {
   @Override
   public void setTestUnit() {
     swordMaster = new SwordMaster(50, 2, field.getCell(0, 0));
+    swordMasterFactory = new SwordMasterFactory(swordMaster);
   }
 
   /**
@@ -27,6 +32,11 @@ public class SwordMasterTest extends AbstractTestUnit {
   @Override
   public IUnit getTestUnit() {
     return swordMaster;
+  }
+
+  @Override
+  public IUnitFactory getTestFactory(){
+    return swordMasterFactory;
   }
 
   @Test
