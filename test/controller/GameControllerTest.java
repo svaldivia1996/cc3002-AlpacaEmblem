@@ -152,6 +152,31 @@ class GameControllerTest {
   }
 
   @Test
+  void tacticianTest(){
+    String expectedName = "Tactitian";
+    Field expectedField = field;
+    IUnit expectedUnit = hero;
+    Tactician testTactician = new Tactician(expectedName,expectedField, expectedUnit);
+    testTactician.setGameController(controller);
+    assertEquals(expectedName, testTactician.getName());
+    assertEquals(expectedField, testTactician.getMap());
+    testTactician.selectUnit(0);
+    assertEquals(expectedUnit, testTactician.getSelectedUnit());
+    assertEquals(50, testTactician.getMaxHitPointsSelectUnit());
+    testTactician.getSelectedUnit().receiveDamage(10);
+    assertEquals(40, testTactician.getCurrentHitPointsSelectedUnit());
+    testTactician.addItemSelectedUnit(spear);
+    assertEquals(1,testTactician.getItemsSelectedUnit().size());
+    assertEquals(spear,testTactician.getItemsSelectedUnit().get(0));
+    testTactician.moveSelectedUnit(field.getCell(0,2));
+    assertEquals(field.getCell(0,2),testTactician.getLocationSelectedUnit());
+    testTactician.equipItemSelectedUnit(spear);
+    assertEquals(spear, testTactician.getSelectedUnit().getEquippedItem());
+    testTactician.removeItemSelectedUnit(spear);
+    assertEquals(0, testTactician.getSelectedUnit().getItems().size());
+  }
+
+  @Test
   void removeTactician() {
     assertEquals(4, controller.getTacticians().size());
     controller.getTacticians()
