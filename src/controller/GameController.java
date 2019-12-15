@@ -87,6 +87,13 @@ public class GameController {
     }
 
     /**
+     * @return the selected item
+     */
+    public IEquipableItem getSelectedItem(){
+        return selectedItem;
+    }
+
+    /**
      * @return the map of the current game
      */
     public Field getGameMap() {
@@ -215,8 +222,20 @@ public class GameController {
         selectedUnit = map.getCell(x,y).getUnit();
     }
 
+    /**
+     * Sets  a new Selected unit
+     * @param unit the selected unit
+     */
     public void setSelectedUnit(IUnit unit){
         selectedUnit = unit;
+    }
+
+    /**
+     * Sets an specific map
+     * @param field the map to be set
+     */
+    public void setMap(Field field){
+        map = field;
     }
 
     /**
@@ -233,7 +252,7 @@ public class GameController {
      *     the location of the item in the inventory.
      */
     public void equipItem(int index) {
-        selectedUnit.equipItem(selectedUnit.getItems().remove(index));
+        selectedUnit.equipItem(selectedUnit.getItems().get(index));
     }
 
     /**

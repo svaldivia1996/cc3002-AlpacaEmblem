@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 import model.Tactician;
+import model.items.Axe;
+import model.items.IEquipableItem;
+import model.items.Spear;
+import model.items.Sword;
 import model.map.Field;
 import model.map.Location;
 import model.units.Fighter;
@@ -31,6 +35,7 @@ class GameControllerTest {
   private List<String> testTacticians;
   private Field field;
   private IUnit fighter,hero, swordMaster;
+  private IEquipableItem spear, sword, axe;
 
   @BeforeEach
   void setUp() {
@@ -40,6 +45,7 @@ class GameControllerTest {
     testTacticians = List.of("Player 0", "Player 1", "Player 2", "Player 3");
     setField();
     setUnits();
+    setWeapon();
   }
 
   // crea un mapa 3x3 completo
@@ -54,6 +60,12 @@ class GameControllerTest {
       fighter = new Fighter(50, 2, field.getCell(0, 0));
       hero = new Hero(50, 2, field.getCell(0, 1));
       swordMaster = new SwordMaster(50, 2, field.getCell(1, 0));
+    }
+
+    public void setWeapon(){
+      spear =new  Spear("Spear", 10,1,2 );
+      sword = new Sword("Sword", 10, 1, 1);
+      axe = new Axe("Axe",10, 1 ,1);
     }
 
 
@@ -203,22 +215,30 @@ class GameControllerTest {
   }
 
   @Test
-  void getItems() {
+  void TestItems() {
+    controller.setMap(field);
+    controller.getTacticians().get(0).addUnit(hero);
+    controller.getTacticians().get(0).selectUnit(0);
+    hero.addItem(spear);
+    controller.selectItem(0);
+    assertEquals(spear, controller.getSelectedItem());
+    controller.equipItem(0);
+    assertEquals(spear,controller.getSelectedUnit().getEquippedItem());
+    controller.moveSelectedUnit(field.getCell(0,2));
+    controller.endTurn();
+    controller.getTacticians().get(1).addUnit(fighter);
+    controller.getTacticians().get(1).selectUnit(0);
+    fighter.addItem(axe);
+    controller.selectItem(0);
+    controller.equipItem(0);
+    controller.moveSelectedUnit(field.getCell(0,1));
+    controller.useItemOn(0,2);
+    assertEquals(50,controller.getSelectedUnit().getCurrentHitPoints());
+    controller.selectUnitIn(0,1);
+    assertEquals(35,controller.getTacticians().get(0).getSelectedUnit().getCurrentHitPoints());
+    controller.giveItemTo(0,2);
+    assertTrue(controller.getTacticians().get(1).getSelectedUnit().getItems().size() == 0);
+    assertTrue(controller.getTacticians().get(0).getSelectedUnit().getItems().size() == 2);
   }
 
-  @Test
-  void equipItem() {
-  }
-
-  @Test
-  void useItemOn() {
-  }
-
-  @Test
-  void selectItem() {
-  }
-
-  @Test
-  void giveItemTo() {
-  }
 }
